@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Profile - Step One</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            oswald: ['Oswald', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-b from-green-50 via-white to-green-100 font-oswald">
+
+  <div class="flex items-center justify-between px-6 pt-6">
+    <div class="flex items-center space-x-2">
+      <div class="bg-green-200 p-2 rounded-full">
+        <i class="fa-solid fa-seedling text-green-700 text-2xl"></i>
+      </div>
+      <span class="text-green-800 text-xl font-bold tracking-wide">Healthy Meal Planner</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col items-center justify-start px-6 pt-8 space-y-10">
+    <h1 class="text-3xl sm:text-4xl font-bold text-green-700 text-center">
+      What’s your diet goal?
+    </h1>
+
+    <div class="flex flex-col space-y-6 w-full" id="options">
+      <div onclick="selectOption(this)" class="option bg-white rounded-2xl shadow-md p-6 cursor-pointer hover:bg-green-100 transition">
+        <h2 class="text-xl font-bold text-gray-900">Eat healthy</h2>
+        <p class="text-gray-500 text-sm mt-2">Have balanced diet and stay lean</p>
+      </div>
+
+      <div onclick="selectOption(this)" class="option bg-white rounded-2xl shadow-md p-6 cursor-pointer hover:bg-green-100 transition">
+        <h2 class="text-xl font-bold text-gray-900">Loose weight</h2>
+        <p class="text-gray-500 text-sm mt-2">Get lean without struggle</p>
+      </div>
+
+      <div onclick="selectOption(this)" class="option bg-white rounded-2xl shadow-md p-6 cursor-pointer hover:bg-green-100 transition">
+        <h2 class="text-xl font-bold text-gray-900">Bulk up</h2>
+        <p class="text-gray-500 text-sm mt-2">Stay active and get stronger</p>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-3 pt-6">
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+      <div class="w-3 h-3 bg-green-700 rounded-full"></div>  
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+    </div>
+
+    <button onclick="goNext()" class="mt-8 bg-green-700 text-white font-semibold py-4 px-12 rounded-xl text-lg hover:bg-green-800 transition duration-300 shadow-md">
+      NEXT
+    </button>
+  </div>
+
+  <script>
+    function selectOption(element) {
+      const options = document.querySelectorAll('.option');
+      options.forEach(option => {
+        option.classList.remove('bg-green-200');
+        option.classList.add('bg-white');
+      });
+      element.classList.remove('bg-white');
+      element.classList.add('bg-green-200');
+    }
+
+    function goNext() {
+      const selected = document.querySelector('.option.bg-green-200');
+      if (selected) {
+        window.location.href = "CompleteProfile_Step_Two.html";
+      } else {
+        alert('Please select a goal before continuing.');
+      }
+    }
+  </script>
+
+</body>
+</html>

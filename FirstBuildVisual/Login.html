@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - Healthy Meal Planner</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            oswald: ['Oswald', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-b from-green-50 via-white to-green-100 font-oswald">
+
+  <div class="flex items-center justify-between px-6 pt-6">
+    <button onclick="goBack()" class="text-green-700 text-2xl">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="flex items-center space-x-2">
+      <div class="bg-green-200 p-2 rounded-full">
+        <i class="fa-solid fa-seedling text-green-700 text-2xl"></i>
+      </div>
+      <span class="text-green-800 text-xl font-bold tracking-wide">Healthy Meal Planner</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-start px-6 pt-10 space-y-10">
+    <h1 class="text-4xl font-bold text-green-800">Log in</h1>
+
+    <form class="flex flex-col space-y-6 bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-lg" onsubmit="validateLogin(event)">
+      <div class="flex flex-col space-y-2">
+        <label for="email" class="text-gray-700 text-sm">E-mail address</label>
+        <input id="email" type="email" placeholder="your.email@example.com" required class="border border-green-700 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 bg-white/70">
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="password" class="text-gray-700 text-sm">Password</label>
+        <input id="password" type="password" placeholder="********" required class="border border-green-700 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700 bg-white/70">
+      </div>
+
+      <button type="submit" class="bg-green-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-800 transition duration-300">
+        LOG IN
+      </button>
+    </form>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = "logged_out.html";
+    }
+
+    function validateLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (email === "" || password === "") {
+        alert('Please fill in all fields.');
+        return false;
+      }
+
+      alert('Logged in successfully!');
+    }
+  </script>
+
+</body>
+</html>
