@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Profile - Step Three</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            oswald: ['Oswald', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .selected {
+      background-color: #15803d; /* Tailwind bg-green-700 */
+      color: white;
+    }
+    .selected i {
+      color: white;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-b from-green-50 via-white to-green-100 font-oswald">
+
+  <div class="flex items-center justify-between px-6 pt-6">
+    <div class="flex items-center space-x-2">
+      <div class="bg-green-200 p-2 rounded-full">
+        <i class="fa-solid fa-seedling text-green-700 text-2xl"></i>
+      </div>
+      <span class="text-green-800 text-xl font-bold tracking-wide">Healthy Meal Planner</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col items-center justify-start px-6 pt-8 space-y-10">
+    <h1 class="text-3xl sm:text-4xl font-bold text-green-700 text-center">
+      Any allergies?
+    </h1>
+
+    <div class="grid grid-cols-3 gap-6" id="allergyGrid">
+      <!-- Allergy options komen hier -->
+    </div>
+
+    <button onclick="goNext()" class="mt-10 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-20 rounded-2xl shadow-lg transition">
+      CONTINUE
+    </button>
+
+    <div class="flex items-center space-x-3 pt-6">
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>  
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+      <div class="w-3 h-3 bg-green-700 rounded-full"></div>
+      <div class="w-3 h-3 border-2 border-green-700 rounded-full"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const allergies = [
+      { name: "Egg", icon: "fa-egg" },
+      { name: "Milk", icon: "fa-mug-hot" },
+      { name: "Nut", icon: "fa-seedling" },
+      { name: "Soybean", icon: "fa-leaf" },
+      { name: "Fish", icon: "fa-fish" },
+      { name: "Wheat", icon: "fa-bread-slice" },
+      { name: "Celery", icon: "fa-leaf" },
+      { name: "Crustacean", icon: "fa-shrimp" },
+      { name: "Mustard", icon: "fa-jar" }
+    ];
+
+    const allergyGrid = document.getElementById('allergyGrid');
+
+    allergies.forEach(item => {
+      const div = document.createElement('div');
+      div.className = "allergy-option flex flex-col items-center p-4 bg-white rounded-full shadow-md hover:bg-green-100 transition cursor-pointer";
+      div.onclick = () => toggleSelect(div);
+      div.innerHTML = `
+        <i class="fa-solid ${item.icon} text-3xl text-green-700"></i>
+        <p class="text-sm mt-2">${item.name}</p>
+      `;
+      allergyGrid.appendChild(div);
+    });
+
+    function toggleSelect(element) {
+      element.classList.toggle('selected');
+    }
+
+    function goNext() {
+      window.location.href = "CompleteProfile_Step_Four.html";
+    }
+  </script>
+
+</body>
+</html>
