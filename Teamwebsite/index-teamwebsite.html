@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Meal Planner - README</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4ade80",
+              dark: "#1f2937",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .toggle-checkbox:checked + .toggle-label .ball {
+        transform: translateX(1.5rem);
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+
+    <div class="fixed top-4 right-4 z-50">
+      <div class="flex items-center gap-2 bg-white dark:bg-gray-700 shadow-md px-3 py-1 rounded-full transition-colors">
+        <span class="text-sm">🌞</span>
+        <input type="checkbox" id="darkToggle" class="hidden toggle-checkbox" />
+        <label for="darkToggle" class="toggle-label w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center px-1 cursor-pointer relative">
+          <div class="ball w-4 h-4 bg-primary rounded-full transition-transform duration-300"></div>
+        </label>
+        <span class="text-sm">🌙</span>
+      </div>
+    </div>
+
+    <header class="bg-primary text-white dark:bg-green-600 shadow-md">
+      <div class="max-w-6xl mx-auto px-6 py-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold">🥦 Healthy Meal Planner</h1>
+        <p class="text-lg md:text-xl">Gezond eten zonder verspilling</p>
+      </div>
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-semibold mb-6">Wat is deze app?</h2>
+      <p class="mb-4 text-lg">
+        De <strong>Healthy Meal Planner</strong> is een slimme desktopapplicatie waarmee gebruikers:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-lg">
+        <li>Gezonde maaltijden kunnen plannen</li>
+        <li>Ingrediënten kunnen toevoegen op basis van wat ze al in huis hebben</li>
+        <li>Voedselverspilling kunnen vermijden</li>
+        <li>Hun persoonlijke voedingsdoelen kunnen beheren</li>
+      </ul>
+    </section>
+
+    <section class="bg-gray-50 dark:bg-gray-800 py-12 transition-colors">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-2xl font-semibold mb-8 text-center">👤 Wat kunnen gebruikers doen?</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-bold text-lg mb-2">✅ Account aanmaken</h3>
+            <p>Iedereen kan zich registreren met e-mail en wachtwoord.</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-bold text-lg mb-2">🔐 Inloggen & wachtwoord resetten</h3>
+            <p>Inloggen gaat veilig. Wachtwoord vergeten? Geen probleem!</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-bold text-lg mb-2">📝 Persoonlijke gegevens beheren</h3>
+            <p>Leeftijd, doel, profielfoto? Alles kan je makkelijk aanpassen.</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-bold text-lg mb-2">🥗 Ingrediënten & maaltijden</h3>
+            <p>Voeg ingrediënten toe en maak slimme maaltijden op basis van wat je hebt.</p>
+          </div>
+        </div>
+        <div class="mt-6 bg-yellow-100 dark:bg-yellow-200 p-4 rounded-lg border-l-4 border-yellow-400 text-yellow-900 text-center">
+          🗑️ <strong>Doel:</strong> Minder voedselverspilling en meer controle over je eetgewoonten.
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔍 In-depth beschrijving -->
+    <section class="bg-white dark:bg-gray-900 py-12 transition-colors">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl font-semibold mb-8 text-center">🔍 In-depth beschrijving van de functies</h2>
+
+        <h3 class="text-xl font-semibold mb-4">👤 Voor gebruikers</h3>
+        <ul class="list-disc list-inside space-y-3 text-lg">
+          <li><strong>Registratie en login:</strong> Nieuwe gebruikers kunnen zich registreren met hun e-mailadres en wachtwoord. Via een loginformulier kunnen ze inloggen en hun sessie behouden. Wachtwoordherstel is beschikbaar via e-mail.</li>
+          <li><strong>Persoonlijk profiel:</strong> Gebruikers kunnen leeftijd, geslacht, doelstellingen (bijv. gewicht verliezen, energie verhogen), en een profielfoto instellen. Deze info wordt gebruikt voor gepersonaliseerde aanbevelingen.</li>
+          <li><strong>Dieetvoorkeuren:</strong> Gebruikers kunnen hun dieettype instellen (vb. vegetarisch, pescotarisch, keto, paleo...) en aangeven wat hun voedingsdoel is.</li>
+          <li><strong>Allergiebeheer:</strong> Gebruikers kunnen allergieën selecteren (vb. gluten, lactose, noten), waarna recepten met deze ingrediënten automatisch worden uitgesloten.</li>
+          <li><strong>Maaltijden ontdekken:</strong> De app toont maaltijden op basis van voorkeuren, seizoensgebonden ingrediënten, en zelfs wat gebruikers nog in huis hebben (later uitbreidbaar).</li>
+          <li><strong>Receptdetails:</strong> Elk recept toont ingrediënten, bereidingswijze, voedingswaarden en kooktijd. Gebruikers kunnen recepten opslaan als favoriet.</li>
+          <li><strong>Boodschappenlijst:</strong> Automatisch gegenereerd op basis van geplande maaltijden. Gebruikers kunnen deze bekijken, aanpassen en afvinken tijdens het winkelen.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold mt-10 mb-4">🛠️ Voor admins</h3>
+        <ul class="list-disc list-inside space-y-3 text-lg">
+          <li><strong>Beheerderslogin:</strong> Admins hebben een aparte login met extra rechten.</li>
+          <li><strong>Gebruikersbeheer:</strong> Admins kunnen gebruikers bekijken, aanpassen of verwijderen indien nodig.</li>
+          <li><strong>Dashboard:</strong> Overzicht van gebruikersactiviteit, zoals het aantal actieve gebruikers, meest geplande maaltijden en statistieken rond allergieën of dieettypes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-semibold mb-8 text-center">🛠️ Wat kunnen admins doen?</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg mb-2">🔑 Inloggen als admin</h3>
+          <p>Admins hebben toegang tot het beheerdersgedeelte via veilige login.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg mb-2">👥 Gebruikers beheren</h3>
+          <p>Bekijk, wijzig of verwijder gebruikers vanuit één overzicht.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="font-bold text-lg mb-2">📊 Overzichtspagina</h3>
+          <p>Zie snel wie de app gebruikt en hoe actief ze zijn.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-100 dark:bg-gray-800 py-12 transition-colors">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-2xl font-semibold mb-6 text-center">📐 Diagrammen & Visualisaties</h2>
+        <p class="text-lg mb-4 text-center">
+          Hieronder een Figma-visualisatie van de app flow & schermen:
+        </p>
+        <div class="mt-8 flex justify-center">
+          <iframe 
+            style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+            width="100%" 
+            height="600" 
+            src="https://embed.figma.com/design/nFG09YbVmDALq3ERa9IjkY/HealtyFoodPlanner?node-id=0-1&embed-host=share" 
+            allowfullscreen
+            class="rounded-lg shadow-lg"
+          ></iframe>
+        </div>
+
+        <div class="mt-16">
+          <h3 class="text-2xl font-semibold mb-6 text-center">📊 ERD & UML Visualisaties</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-center">
+              <h4 class="text-xl font-semibold mb-4">🔗 Entity Relationship Diagram (ERD)</h4>
+              <img src="./Assets/SVG/ERD_HealtyMealPlanner_SVG.svg" alt="ERD Diagram" class="rounded-lg shadow-lg mx-auto w-full max-w-xl" />
+            </div>
+            <div class="text-center">
+              <h4 class="text-xl font-semibold mb-4">📦 UML Klassendiagram</h4>
+              <img src="./Assets/PlantUML/SVG/UMLdiagram.svg" alt="UML Diagram" class="rounded-lg shadow-lg mx-auto w-full max-w-xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-6 mt-12">
+      <p>Gemaakt door Yorbe en Jonas 💪 | &copy; 2025 Healthy Meal Planner</p>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("darkToggle");
+      const html = document.documentElement;
+
+      if (localStorage.getItem("theme") === "dark" || 
+         (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        html.classList.add("dark");
+        toggle.checked = true;
+      }
+
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
+  </body>
+</html>
