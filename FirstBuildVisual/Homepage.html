@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Healthy Meal Planner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans text-gray-800">
+  <div class="max-w-4xl mx-auto p-6">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <p class="text-lg text-gray-500">Welcome,</p>
+        <h1 class="text-2xl font-bold">SilentZer0</h1>
+      </div>
+      <img src="https://via.placeholder.com/60" alt="Profile" class="w-14 h-14 rounded-full object-cover border-2 border-green-500" />
+    </div>
+
+    <div class="mb-6 text-center text-gray-500 italic">
+      <p id="dailyQuote">Eat well, live well. 🍽️</p>
+    </div>
+
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">What do you want to cook today?</h2>
+
+    <div class="flex gap-8 justify-center mb-8">
+      <button onclick="choosePlan('weekly')" class="flex flex-col items-center bg-white shadow-md rounded-xl p-5 w-40 hover:bg-green-50 transition">
+        <div class="bg-green-100 p-3 rounded-full mb-3">📅</div>
+        <span class="font-medium">Weekly Plan</span>
+      </button>
+      <button onclick="choosePlan('quick')" class="flex flex-col items-center bg-white shadow-md rounded-xl p-5 w-40 hover:bg-green-50 transition">
+        <div class="bg-green-100 p-3 rounded-full mb-3">⚡</div>
+        <span class="font-medium">Quick Plan</span>
+      </button>
+    </div>
+
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="bg-green-100 p-2 rounded-xl">🥦</div>
+        <span class="font-semibold text-gray-700">Your Ingredients</span>
+        <span class="text-sm text-gray-400">Add what you have</span>
+      </div>
+      <div id="ingredientList" class="flex flex-wrap gap-2 mb-2"></div>
+      <div class="flex gap-2">
+        <input id="newIngredient" type="text" placeholder="Add new ingredient" class="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400" />
+        <button id="addButton" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Add</button>
+      </div>
+    </div>
+
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="bg-green-100 p-2 rounded-xl">👨‍👩‍👧</div>
+        <span class="font-semibold text-gray-700">Servings</span>
+        <span class="text-sm text-gray-400">Number of people</span>
+      </div>
+      <input id="servingsInput" type="number" min="1" value="2" class="w-20 p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400" />
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-4 mb-10">
+      <button id="surpriseBtn" class="w-full md:w-1/2 bg-gradient-to-r from-purple-400 to-pink-500 text-white py-3 rounded-full font-semibold shadow-md hover:opacity-90">Surprise ME</button>
+      <button id="generateBtn" class="w-full md:w-1/2 bg-green-600 text-white py-3 rounded-full font-semibold shadow-md hover:bg-green-700">Generate Plan</button>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">Recent Meals</h3>
+      <ul id="historyList" class="text-sm text-gray-600 space-y-1"></ul>
+    </div>
+
+    <div class="mb-8">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">📦 Suggested Meals</h3>
+      <ul id="suggestedMeals" class="text-sm text-gray-700 space-y-1"></ul>
+    </div>
+  </div>
+
+  <div id="mealModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">&times;</button>
+      <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
+      <p class="text-sm text-gray-500 mb-4">Ingredients: <span id="modalIngredients"></span></p>
+      <p class="text-gray-700" id="modalRecipe"></p>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Healthy eating starts with a single ingredient. 🥗",
+      "Fuel your day with the right meal. 💪",
+      "A good plan today means a good meal tonight!",
+      "Stay strong. Eat clean. Live long. 🍎"
+    ];
+    document.getElementById("dailyQuote").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+
+    const mealDatabase = [
+  { name: "Spaghetti Bolognese", ingredients: ["Spaghetti", "Tomatoes", "Beef"], recipe: "Cook spaghetti and mix with tomato-beef sauce." },
+  { name: "Grilled Cheese Sandwich", ingredients: ["Bread", "Cheese"], recipe: "Grill cheese between slices of bread." },
+  { name: "Omelette", ingredients: ["Eggs", "Tomatoes", "Cheese"], recipe: "Whisk eggs and cook with tomatoes and cheese." },
+  { name: "Pesto Pasta", ingredients: ["Pasta", "Basil", "Olive Oil"], recipe: "Blend basil and oil into pesto and mix with pasta." },
+  { name: "Fruit Smoothie", ingredients: ["Banana", "Milk", "Berries"], recipe: "Blend banana, milk, and berries until smooth." },
+  { name: "Chicken Stir-fry", ingredients: ["Chicken", "Rice"], recipe: "Sauté chicken and mix with rice and vegetables." },
+  { name: "Avocado Salad", ingredients: ["Avocado", "Tomatoes"], recipe: "Slice avocado and tomatoes, drizzle with olive oil." },
+  { name: "Veggie Rice Bowl", ingredients: ["Rice", "Tomatoes"], recipe: "Mix cooked rice with chopped vegetables." },
+  { name: "Tomato Soup", ingredients: ["Tomatoes"], recipe: "Simmer tomatoes with garlic and blend." },
+  { name: "Chicken Wrap", ingredients: ["Chicken", "Tomatoes"], recipe: "Wrap grilled chicken and tomatoes in tortilla." },
+  { name: "Tofu Stir-fry", ingredients: ["Tofu", "Broccoli", "Soy Sauce"], recipe: "Stir-fry tofu with broccoli and soy sauce." },
+  { name: "Sushi Bowl", ingredients: ["Rice", "Avocado", "Cucumber", "Seaweed"], recipe: "Assemble sushi-style ingredients in a bowl." },
+  { name: "Greek Salad", ingredients: ["Cucumber", "Tomatoes", "Feta Cheese", "Olives"], recipe: "Mix all veggies and top with feta and olives." },
+  { name: "Beef Tacos", ingredients: ["Tortilla", "Beef", "Lettuce", "Cheese"], recipe: "Cook beef and serve in tortillas with toppings." },
+  { name: "Lentil Soup", ingredients: ["Lentils", "Carrots", "Celery"], recipe: "Boil lentils with vegetables until tender." },
+  { name: "Falafel Wrap", ingredients: ["Falafel", "Lettuce", "Tomatoes", "Hummus"], recipe: "Wrap falafel and veggies in flatbread with hummus." },
+  { name: "Caprese Salad", ingredients: ["Tomatoes", "Mozzarella", "Basil"], recipe: "Layer tomato slices with mozzarella and basil." },
+  { name: "Chickpea Curry", ingredients: ["Chickpeas", "Coconut Milk", "Curry Powder"], recipe: "Simmer chickpeas in coconut curry sauce." },
+  { name: "Miso Soup", ingredients: ["Miso Paste", "Tofu", "Seaweed", "Green Onions"], recipe: "Boil water and mix in all ingredients." },
+  { name: "Korean Bibimbap", ingredients: ["Rice", "Carrots", "Eggs", "Spinach", "Beef"], recipe: "Top rice with seasoned veggies and egg." },
+  { name: "Thai Green Curry", ingredients: ["Coconut Milk", "Green Curry Paste", "Chicken", "Zucchini"], recipe: "Simmer chicken and veggies in curry sauce." },
+  { name: "Paneer Tikka", ingredients: ["Paneer", "Yogurt", "Spices"], recipe: "Marinate paneer and grill or pan-fry." },
+  { name: "Shakshuka", ingredients: ["Eggs", "Tomatoes", "Onion", "Bell Pepper"], recipe: "Poach eggs in spicy tomato sauce." },
+  { name: "Risotto", ingredients: ["Arborio Rice", "Mushrooms", "Parmesan"], recipe: "Slowly cook rice with broth and stir in mushrooms." },
+  { name: "Stuffed Peppers", ingredients: ["Bell Peppers", "Rice", "Ground Beef", "Tomatoes"], recipe: "Fill peppers and bake with tomato sauce." },
+  { name: "Quinoa Bowl", ingredients: ["Quinoa", "Black Beans", "Corn", "Avocado"], recipe: "Mix all ingredients into a healthy bowl." },
+  { name: "Fried Rice", ingredients: ["Rice", "Eggs", "Peas", "Carrots", "Soy Sauce"], recipe: "Fry all ingredients in a wok with soy sauce." },
+  { name: "Eggplant Parmesan", ingredients: ["Eggplant", "Tomatoes", "Mozzarella", "Breadcrumbs"], recipe: "Bake breaded eggplant with sauce and cheese." },
+  { name: "Zucchini Noodles", ingredients: ["Zucchini", "Tomatoes", "Parmesan"], recipe: "Spiralize zucchini and top with sauce." },
+  { name: "Peanut Noodle Salad", ingredients: ["Noodles", "Carrots", "Peanuts", "Soy Sauce"], recipe: "Toss cooked noodles with veggies and sauce." }
+];
+
+    function createIngredientTag(name) {
+      const span = document.createElement("span");
+      span.className = "ingredient bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700 flex items-center gap-2";
+      span.innerHTML = `+ ${name} <button class="text-red-500 hover:text-red-700">&times;</button>`;
+      span.querySelector("button").addEventListener("click", () => {
+        span.remove();
+        updateSuggestions();
+      });
+      return span;
+    }
+
+    function addIngredient() {
+      const input = document.getElementById("newIngredient");
+      const value = input.value.trim();
+      if (value) {
+        const list = document.getElementById("ingredientList");
+        list.appendChild(createIngredientTag(value));
+        input.value = "";
+        updateSuggestions();
+      }
+    }
+
+    function updateSuggestions() {
+      const current = Array.from(document.querySelectorAll(".ingredient"))
+        .map(i => i.textContent.replace(/×/, '').replace('+ ', '').trim());
+      const ul = document.getElementById("suggestedMeals");
+      ul.innerHTML = "";
+      const scored = mealDatabase.map(meal => {
+        const matchCount = meal.ingredients.filter(ing => current.includes(ing)).length;
+        return { ...meal, matchCount };
+      }).filter(meal => meal.matchCount > 0)
+        .sort((a, b) => b.matchCount - a.matchCount);
+      if (scored.length === 0) {
+        ul.innerHTML = '<li class="text-gray-400">No suggestions yet. Try adding more ingredients.</li>';
+      } else {
+        scored.forEach(meal => {
+          const li = document.createElement("li");
+          li.className = "cursor-pointer hover:text-green-600";
+          li.textContent = `✔ ${meal.name} (${meal.matchCount}/${meal.ingredients.length})`;
+          li.onclick = () => showModal(meal);
+          ul.appendChild(li);
+        });
+      }
+    }
+
+    function showModal(meal) {
+      document.getElementById("modalTitle").textContent = meal.name;
+      document.getElementById("modalIngredients").textContent = meal.ingredients.join(", ");
+      document.getElementById("modalRecipe").textContent = meal.recipe;
+      document.getElementById("mealModal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+      document.getElementById("mealModal").classList.add("hidden");
+    }
+
+    function choosePlan(type) {
+      alert(`You selected the ${type === 'weekly' ? 'Weekly Plan' : 'Quick Plan'}`);
+    }
+
+    function surprisePlan() {
+      const ideas = ["Stir-fry Surprise 🥢", "Rainbow Salad 🥗", "Protein Bowl 🍲", "Mediterranean Mix 🧄"];
+      const choice = ideas[Math.floor(Math.random() * ideas.length)];
+      addToHistory(choice);
+      alert(`🎲 Surprise Meal: ${choice}`);
+    }
+
+    function generatePlan() {
+      const ingredients = Array.from(document.querySelectorAll(".ingredient"))
+        .map(i => i.textContent.replace(/×/, '').trim());
+      const servings = document.getElementById("servingsInput").value;
+      const plan = `Generating plan for ${servings} serving(s) with:\n${ingredients.join(", ")}`;
+      addToHistory(`Plan for ${servings} with ${ingredients.length} ingredients`);
+      alert(plan);
+    }
+
+    function addToHistory(text) {
+      const li = document.createElement("li");
+      li.textContent = `• ${text}`;
+      document.getElementById("historyList").prepend(li);
+    }
+
+    document.getElementById("addButton").addEventListener("click", addIngredient);
+    document.getElementById("generateBtn").addEventListener("click", generatePlan);
+    document.getElementById("surpriseBtn").addEventListener("click", surprisePlan);
+
+    ["Tomatoes", "Chicken", "Rice", "Avocado"].forEach(name => {
+      document.getElementById("ingredientList").appendChild(createIngredientTag(name));
+    });
+    updateSuggestions();
+  </script>
+</body>
+</html>
