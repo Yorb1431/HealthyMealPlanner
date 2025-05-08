@@ -1,4 +1,4 @@
-<Window x:Class="HealthyMealPlanner.Views.ProfilePage"
+<Window x:Class="HealthyMealPlanner.UserProfile"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="User Profile - Healthy Meal Planner" Height="720" Width="1000" Background="#F9FAFB" WindowStartupLocation="CenterScreen">
@@ -9,90 +9,86 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Margin="0 0 0 30">
+            <StackPanel Grid.Row="0" Margin="0,0,0,30">
                 <TextBlock Text="👤 User Profile" FontSize="28" FontWeight="Bold" Foreground="#16A34A"/>
                 <TextBlock Text="Update your personal health info and goals" FontSize="14" Foreground="Gray"/>
             </StackPanel>
 
             <Border Grid.Row="1" Background="White" CornerRadius="30" Padding="0" 
                     BorderBrush="#E5E7EB" BorderThickness="1" 
-                    SnapsToDevicePixels="True" >
+                    SnapsToDevicePixels="True">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Background="#16A34A" Padding="20" HorizontalAlignment="Center">
-                        <Grid Width="120" Height="120" Margin="0 0 0 20">
+                    <StackPanel Background="#16A34A" Margin="0" HorizontalAlignment="Center">
+                        <Grid Width="120" Height="120" Margin="0,0,0,20">
                             <Ellipse Fill="White"/>
                             <Image x:Name="ProfileImage" Source="https://via.placeholder.com/150"
-                                   Stretch="Fill" ClipToBounds="True" Width="120" Height="120"
-                                   Margin="4" />
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 8">
-                                <Button Content="Change" FontSize="10" Padding="4,2" Margin="2"
-                                        Background="White" Foreground="#16A34A" />
-                                <Button Content="Delete" FontSize="10" Padding="4,2" Margin="2"
-                                        Background="#DC2626" Foreground="White" />
+                                   Stretch="Fill" ClipToBounds="True" Width="120" Height="120" Margin="4" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8">
+                                <Button Content="Change" FontSize="10" Padding="4,2" Margin="2" Background="White" Foreground="#16A34A" />
+                                <Button Content="Delete" FontSize="10" Padding="4,2" Margin="2" Background="#DC2626" Foreground="White" />
                             </StackPanel>
                         </Grid>
                         <TextBlock Text="Yorbe" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                         <TextBlock Text="@SilentZer0" FontSize="12" Foreground="#D1FAE5" HorizontalAlignment="Center"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Padding="30" Background="White" Spacing="20">
+                    <StackPanel Grid.Column="1" Margin="30,30,30,30">
 
-                        <Grid Margin="0 0 0 10">
+                        <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0">
-                                <TextBlock Text="Height" FontWeight="SemiBold" Margin="0 0 0 5"/>
-                                <TextBox x:Name="HeightBox" PlaceholderText="cm or in" />
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBlock Text="Height" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="HeightBox" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Margin="10,0">
-                                <TextBlock Text="Height Unit" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                <TextBlock Text="Height Unit" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <ComboBox>
                                     <ComboBoxItem Content="cm" IsSelected="True"/>
                                     <ComboBoxItem Content="inches"/>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <TextBlock Text="BMI" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBlock Text="BMI" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <TextBlock Text="--.--" x:Name="BMIValue" FontSize="18" FontWeight="Bold" Foreground="#2563EB"/>
                             </StackPanel>
                         </Grid>
 
-                        <!-- Weight en Calories -->
-                        <Grid Margin="0 0 0 10">
+                        <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0">
-                                <TextBlock Text="Weight" FontWeight="SemiBold" Margin="0 0 0 5"/>
-                                <TextBox x:Name="WeightBox" PlaceholderText="e.g. 150"/>
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBlock Text="Weight" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                                <TextBox x:Name="WeightBox" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Margin="10,0">
-                                <TextBlock Text="Weight Unit" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                <TextBlock Text="Weight Unit" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <ComboBox>
                                     <ComboBoxItem Content="kg"/>
                                     <ComboBoxItem Content="lbs" IsSelected="True"/>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <TextBlock Text="Daily Calories" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBlock Text="Daily Calories" FontWeight="SemiBold" Margin="0,0,0,5"/>
                                 <TextBlock Text="--" x:Name="CaloriesValue" FontSize="18" FontWeight="Bold" Foreground="#16A34A"/>
                             </StackPanel>
                         </Grid>
 
-                        <StackPanel>
-                            <TextBlock Text="Weight Goal" FontWeight="SemiBold" Margin="0 0 5"/>
+                        <StackPanel Margin="0,0,0,10">
+                            <TextBlock Text="Weight Goal" FontWeight="SemiBold" Margin="0,0,0,5"/>
                             <ComboBox>
                                 <ComboBoxItem Content="Maintain Weight" IsSelected="True"/>
                                 <ComboBoxItem Content="Lose Weight"/>
@@ -100,8 +96,8 @@
                             </ComboBox>
                         </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Diet Type" FontWeight="SemiBold" Margin="0 0 5"/>
+                        <StackPanel Margin="0,0,0,10">
+                            <TextBlock Text="Diet Type" FontWeight="SemiBold" Margin="0,0,0,5"/>
                             <ComboBox>
                                 <ComboBoxItem Content="Paleo" IsSelected="True"/>
                                 <ComboBoxItem Content="Vegan"/>
@@ -111,9 +107,9 @@
                             </ComboBox>
                         </StackPanel>
 
-                        <StackPanel>
-                            <TextBlock Text="Allergies" FontWeight="SemiBold" Margin="0 0 5"/>
-                            <WrapPanel x:Name="AllergyList" Margin="0 0 0 10">
+                        <StackPanel Margin="0,0,0,10">
+                            <TextBlock Text="Allergies" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                            <WrapPanel x:Name="AllergyList" Margin="0,0,0,10">
                                 <Border Background="#FEE2E2" CornerRadius="15" Padding="6,2" Margin="4">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Dairy" Foreground="#DC2626"/>
@@ -121,15 +117,15 @@
                                     </StackPanel>
                                 </Border>
                             </WrapPanel>
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <TextBox x:Name="NewAllergy" Width="200" PlaceholderText="Add allergy"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="NewAllergy" Width="200" Margin="0,0,10,0"/>
                                 <Button Content="Add" Background="#DC2626" Foreground="White" Padding="10,4" BorderBrush="{x:Null}" />
                             </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0 20 0 0">
-                            <Button Content="✅ Save Changes" Background="#16A34A" Foreground="White" Padding="12,6" BorderBrush="{x:Null}" FontWeight="Bold"/>
-                            <Button Content="🗑️ Delete Account" Background="#DC2626" Foreground="White" Padding="12,6" BorderBrush="{x:Null}" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                            <Button Content="Save Changes" Background="#16A34A" Foreground="White" Padding="12,6" BorderBrush="{x:Null}" FontWeight="Bold" Margin="0,0,10,0"/>
+                            <Button Content="Delete Account" Background="#DC2626" Foreground="White" Padding="12,6" BorderBrush="{x:Null}" FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
