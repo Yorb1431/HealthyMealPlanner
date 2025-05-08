@@ -26,3 +26,20 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+
+
+<StackPanel Background="#16A34A" Padding="20" HorizontalAlignment="Center">
+                        <Grid Width="120" Height="120" Margin="0 0 0 20">
+                            <Ellipse Fill="White"/>
+                            <Image x:Name="ProfileImage" Source="https://via.placeholder.com/150"
+                                   Stretch="Fill" ClipToBounds="True" Width="120" Height="120" Margin="4"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 8">
+                                <Button Content="Change" FontSize="10" Padding="4,2" Margin="2"
+                                        Background="White" Foreground="#16A34A"/>
+                                <Button Content="Delete" FontSize="10" Padding="4,2" Margin="2"
+                                        Background="#DC2626" Foreground="White"/>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Text="Yorbe" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="@SilentZer0" FontSize="12" Foreground="#D1FAE5" HorizontalAlignment="Center"/>
+                    </StackPanel>
