@@ -11,3 +11,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0" Margin="0 0 0 30">
+                <TextBlock Text="👤 User Profile" FontSize="28" FontWeight="Bold" Foreground="#16A34A"/>
+                <TextBlock Text="Update your personal health info and goals" FontSize="14" Foreground="Gray"/>
+            </StackPanel>
