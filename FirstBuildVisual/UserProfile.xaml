@@ -43,3 +43,57 @@
                         <TextBlock Text="Yorbe" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                         <TextBlock Text="@SilentZer0" FontSize="12" Foreground="#D1FAE5" HorizontalAlignment="Center"/>
                     </StackPanel>
+
+
+
+<StackPanel Grid.Column="1" Padding="30" Background="White" Spacing="20">
+
+                        <!-- Height en BMI -->
+                        <Grid Margin="0 0 0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Height" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBox x:Name="HeightBox" PlaceholderText="cm or in"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="10,0">
+                                <TextBlock Text="Height Unit" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <ComboBox>
+                                    <ComboBoxItem Content="cm" IsSelected="True"/>
+                                    <ComboBoxItem Content="inches"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="BMI" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBlock Text="--.--" x:Name="BMIValue" FontSize="18" FontWeight="Bold" Foreground=\"#2563EB\"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Weight en Calories -->
+                        <Grid Margin="0 0 0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Weight" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBox x:Name="WeightBox" PlaceholderText="e.g. 150"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="10,0">
+                                <TextBlock Text="Weight Unit" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <ComboBox>
+                                    <ComboBoxItem Content="kg"/>
+                                    <ComboBoxItem Content="lbs" IsSelected="True"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Daily Calories" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                                <TextBlock Text="--" x:Name="CaloriesValue" FontSize="18" FontWeight="Bold" Foreground=\"#16A34A\"/>
+                            </StackPanel>
+                        </Grid>
