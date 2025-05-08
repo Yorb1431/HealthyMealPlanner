@@ -48,7 +48,6 @@
 
 <StackPanel Grid.Column="1" Padding="30" Background="White" Spacing="20">
 
-                        <!-- Height en BMI -->
                         <Grid Margin="0 0 0 10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -73,7 +72,6 @@
                             </StackPanel>
                         </Grid>
 
-                        <!-- Weight en Calories -->
                         <Grid Margin="0 0 0 10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -97,3 +95,52 @@
                                 <TextBlock Text="--" x:Name="CaloriesValue" FontSize="18" FontWeight="Bold" Foreground=\"#16A34A\"/>
                             </StackPanel>
                         </Grid>
+
+
+
+            <StackPanel>
+                            <TextBlock Text="Weight Goal" FontWeight="SemiBold" Margin="0 0 5"/>
+                            <ComboBox>
+                                <ComboBoxItem Content="Maintain Weight" IsSelected="True"/>
+                                <ComboBoxItem Content="Lose Weight"/>
+                                <ComboBoxItem Content="Gain Weight"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Diet Type" FontWeight="SemiBold" Margin="0 0 5"/>
+                            <ComboBox>
+                                <ComboBoxItem Content="Paleo" IsSelected="True"/>
+                                <ComboBoxItem Content="Vegan"/>
+                                <ComboBoxItem Content="Keto"/>
+                                <ComboBoxItem Content="Vegetarian"/>
+                                <ComboBoxItem Content="Low-Carb"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Allergies" FontWeight="SemiBold" Margin="0 0 5"/>
+                            <WrapPanel x:Name="AllergyList" Margin="0 0 0 10">
+                                <Border Background=\"#FEE2E2\" CornerRadius=\"15\" Padding=\"6,2\" Margin=\"4\">
+                                    <StackPanel Orientation=\"Horizontal\">
+                                        <TextBlock Text=\"Dairy\" Foreground=\"#DC2626\"/>
+                                        <Button Content=\"✕\" Background=\"Transparent\" Foreground=\"#DC2626\" BorderThickness=\"0\" Padding=\"0\" />
+                                    </StackPanel>
+                                </Border>
+                            </WrapPanel>
+                            <StackPanel Orientation=\"Horizontal\" Spacing=\"10\">
+                                <TextBox x:Name=\"NewAllergy\" Width=\"200\" PlaceholderText=\"Add allergy\"/>
+                                <Button Content=\"Add\" Background=\"#DC2626\" Foreground=\"White\" Padding=\"10,4\" BorderBrush=\"{x:Null}\" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation=\"Horizontal\" HorizontalAlignment=\"Right\" Spacing=\"10\" Margin=\"0 20 0 0\">
+                            <Button Content=\"✅ Save Changes\" Background=\"#16A34A\" Foreground=\"White\" Padding=\"12,6\" BorderBrush=\"{x:Null}\" FontWeight=\"Bold\"/>
+                            <Button Content=\"🗑️ Delete Account\" Background=\"#DC2626\" Foreground=\"White\" Padding=\"12,6\" BorderBrush=\"{x:Null}\" FontWeight=\"Bold\"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>
