@@ -17,3 +17,12 @@
                 <TextBlock Text="👤 User Profile" FontSize="28" FontWeight="Bold" Foreground="#16A34A"/>
                 <TextBlock Text="Update your personal health info and goals" FontSize="14" Foreground="Gray"/>
             </StackPanel>
+
+
+            <Border Grid.Row="1" Background="White" CornerRadius="30" Padding="0"
+                    BorderBrush="#E5E7EB" BorderThickness="1" SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
