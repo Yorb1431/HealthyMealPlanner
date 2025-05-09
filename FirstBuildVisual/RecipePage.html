@@ -47,16 +47,17 @@
         <li><label class="flex items-center gap-2"><input type="checkbox" class="ingredient-checkbox" checked data-base="1" data-unit="tbsp"> <span class="ingredient-label">1 tbsp × Oil</span></label></li>
       </ul>
 
-      <ol id="instructions" class="space-y-4 text-sm hidden mt-4 list-decimal list-inside">
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Prep the chicken – Cut chicken into thin strips. Season with salt, pepper, and a bit of paprika.</span></label></li>
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Cook the chicken – Heat oil in a pan. Cook until golden brown. Set aside.</span></label></li>
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Cook the kousenband – In the same pan, add chopped kousenband and garlic/onion. Sauté for 3–4 minutes until tender but crunchy.</span></label></li>
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Scramble the eggs – Beat eggs with a pinch of salt. Scramble until fluffy.</span></label></li>
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Assemble the wrap – Warm tortillas slightly. Fill with chicken, eggs, and kousenband.</span></label></li>
-        <li><label class="flex items-start gap-2"><input type="checkbox" class="step-check mt-1"> <span>Wrap and enjoy! – Add sauce if you like (e.g., garlic, spicy mayo).</span></label></li>
-      </ol>
+      <div id="instructions" class="hidden mt-4 space-y-6">
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">1. Prep the chicken</h3><p>Cut chicken into thin strips. Season with salt, pepper, and a bit of paprika.</p></div>
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">2. Cook the chicken</h3><p>Heat oil in a pan. Cook until golden brown. Set aside.</p></div>
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">3. Cook the kousenband</h3><p>In the same pan, add chopped kousenband and garlic/onion. Sauté for 3–4 minutes until tender but crunchy.</p></div>
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">4. Scramble the eggs</h3><p>Beat eggs with a pinch of salt. Scramble until fluffy.</p></div>
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">5. Assemble the wrap</h3><p>Warm tortillas slightly. Fill with chicken, eggs, and kousenband.</p></div>
+        <div class="bg-white p-4 rounded-lg shadow"><h3 class="font-semibold mb-2">6. Wrap and enjoy!</h3><p>Add sauce if you like (e.g., garlic, spicy mayo).</p></div>
+      </div>
 
       <div id="nutrition" class="hidden mt-4">
+        <h3 class="font-semibold text-center text-lg mb-4">Nutrition Breakdown</h3>
         <canvas id="nutritionChart" width="300" height="300" class="mx-auto my-6"></canvas>
       </div>
     </div>
@@ -160,6 +161,7 @@
         }]
       },
       options: {
+        responsive: true,
         plugins: {
           legend: { position: 'bottom' }
         }
