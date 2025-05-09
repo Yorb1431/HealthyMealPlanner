@@ -47,10 +47,10 @@ De Healthy Meal Planner is een gebruiksvriendelijke C# desktopapplicatie die geb
 
 ## 💻 Technologieën
 
-- **C#** (.NET Windows Forms)  
+- **C#** (WPF) 
 - **MySQL** (via **XAMPP**)  
 - **Visual Studio**  
-- **XAMPP** (enkel database)  
+- **XAMPP**  (SQL Database)
 
 ---
 
