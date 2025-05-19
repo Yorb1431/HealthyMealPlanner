@@ -147,6 +147,11 @@
                 </Setter>
             </Style>
 
+            <DropShadowEffect x:Key="ShadowEffect" 
+                             BlurRadius="10" 
+                             ShadowDepth="2" 
+                             Color="#20000000"/>
+
 
 
 
