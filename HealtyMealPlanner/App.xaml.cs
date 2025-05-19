@@ -13,11 +13,13 @@ namespace HealthyMealPlanner
         {
             base.OnStartup(e);
 
+            // Set up any global exception handling here
             DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
+            // Log the exception
             MessageBox.Show($"An error occurred: {e.Exception.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
         }
