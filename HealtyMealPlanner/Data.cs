@@ -22,3 +22,24 @@ namespace HealthyMealPlanner
             }
         }
 
+        private int Insert(string query, params MySqlParameter[] parameters)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            using (var command = new MySqlCommand(query, connection))
+            {
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    return (int)command.LastInsertedId;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return -1;
+            }
+        }
