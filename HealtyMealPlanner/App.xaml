@@ -152,6 +152,10 @@
                              ShadowDepth="2" 
                              Color="#20000000"/>
 
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
 
 
 
