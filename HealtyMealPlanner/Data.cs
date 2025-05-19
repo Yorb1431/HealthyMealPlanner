@@ -21,9 +21,8 @@ namespace HealthyMealPlanner
                 return Convert.ToBase64String(hash);
             }
         }
-        
-        // Insert helper for non-query commands
 
+        // Insert helper for non-query commands
         private int Insert(string query, params MySqlParameter[] parameters)
         {
             using (var connection = new MySqlConnection(connectionString))
