@@ -4,20 +4,24 @@
              StartupUri="Views/LoggedOutView.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Colors -->
             <SolidColorBrush x:Key="PrimaryGreenBrush" Color="#4CAF50"/>
             <SolidColorBrush x:Key="DarkGreenBrush" Color="#388E3C"/>
             <SolidColorBrush x:Key="LightGreenBrush" Color="#E8F5E9"/>
 
+            <!-- Text Styles -->
             <Style x:Key="HeaderText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="24"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
             </Style>
-                        <Style x:Key="LabelText" TargetType="TextBlock">
+
+            <Style x:Key="LabelText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Foreground" Value="{StaticResource DarkGreenBrush}"/>
             </Style>
 
+            <!-- Button Styles -->
             <Style x:Key="LoginButton" TargetType="Button">
                 <Setter Property="Background" Value="{StaticResource PrimaryGreenBrush}"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -44,7 +48,7 @@
                 </Style.Triggers>
             </Style>
 
-                        <Style x:Key="BackButton" TargetType="Button">
+            <Style x:Key="BackButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Padding" Value="5"/>
@@ -67,7 +71,8 @@
                 </Style.Triggers>
             </Style>
 
-                        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <!-- TextBox Styles -->
+            <Style x:Key="ModernTextBox" TargetType="TextBox">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Padding" Value="10"/>
@@ -85,6 +90,8 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <!-- PasswordBox Style -->
             <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
@@ -93,7 +100,8 @@
                 <Setter Property="Foreground" Value="#333333"/>
             </Style>
 
-                    <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <!-- ComboBox Styles -->
+            <Style x:Key="ModernComboBox" TargetType="ComboBox">
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Padding" Value="10"/>
@@ -147,16 +155,14 @@
                 </Setter>
             </Style>
 
+            <!-- Effects -->
             <DropShadowEffect x:Key="ShadowEffect" 
                              BlurRadius="10" 
                              ShadowDepth="2" 
                              Color="#20000000"/>
 
+            <!-- Converters -->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
-
-
-
-
