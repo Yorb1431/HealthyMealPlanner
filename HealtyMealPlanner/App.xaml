@@ -93,5 +93,61 @@
                 <Setter Property="Foreground" Value="#333333"/>
             </Style>
 
+                    <Style x:Key="ModernComboBox" TargetType="ComboBox">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="20"
+                                    Padding="{TemplateBinding Padding}">
+                                <Grid>
+                                    <ToggleButton x:Name="ToggleButton"
+                                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ClickMode="Press">
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border Background="Transparent"
+                                                        BorderThickness="0">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition/>
+                                                            <ColumnDefinition Width="20"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <ContentPresenter Grid.Column="0"
+                                                                        Content="{TemplateBinding Content}"
+                                                                        VerticalAlignment="Center"/>
+                                                        <Path Grid.Column="1"
+                                                              Data="M7,10L12,15L17,10H7Z"
+                                                              Fill="{StaticResource DarkGreenBrush}"
+                                                              VerticalAlignment="Center"/>
+                                                    </Grid>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                    </ToggleButton>
+                                    <Popup x:Name="Popup"
+                                           AllowsTransparency="True"
+                                           IsOpen="{TemplateBinding IsDropDownOpen}"
+                                           Placement="Bottom">
+                                        <Border Background="White"
+                                                CornerRadius="10"
+                                                Effect="{StaticResource ShadowEffect}">
+                                            <ScrollViewer MaxHeight="200">
+                                                <ItemsPresenter/>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+
 
 
