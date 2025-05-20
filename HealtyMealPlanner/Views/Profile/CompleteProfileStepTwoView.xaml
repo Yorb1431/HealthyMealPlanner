@@ -13,3 +13,108 @@
             <GradientStop Color="#DCFCE7" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
+    <Grid>
+        <!-- Header -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="24,24,0,0" VerticalAlignment="Top">
+            <Border Background="#BBF7D0" Padding="8" CornerRadius="20" VerticalAlignment="Center">
+                <Viewbox Width="24" Height="24">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" Fill="#15803D"/>
+                    </Canvas>
+                </Viewbox>
+            </Border>
+            <TextBlock Text="Healthy Meal Planner" Foreground="#166534" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </StackPanel>
+        <!-- Main Content -->
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,0">
+            <TextBlock Text="What's your diet type?" FontSize="28" FontWeight="Bold" Foreground="#15803D" TextAlignment="Center" Margin="0,0,0,24"/>
+            <StackPanel x:Name="OptionsPanel" Orientation="Vertical" Width="320" Margin="0,0,0,0">
+                <Border x:Name="OptionEverything" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="I eat everything" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
+                        <TextBlock Text="No specific dietary preferences" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="OptionVegetarian" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="Vegetarian" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
+                        <TextBlock Text="No meat" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="OptionVegan" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="Vegan" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
+                        <TextBlock Text="Plant-based diet" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="OptionKeto" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="Keto" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
+                        <TextBlock Text="Low-carb, High-fat" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="OptionPaleo" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,0" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                    <StackPanel>
+                        <TextBlock Text="Paleo" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
+                        <TextBlock Text="Unprocessed foods" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <!-- Progress Dots -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,5">
+                <Ellipse Width="12" Height="12" Stroke="#15803D" StrokeThickness="2" Fill="Transparent" Margin="0,0,8,0"/>
+                <Ellipse Width="12" Height="12" Stroke="#15803D" StrokeThickness="2" Fill="Transparent" Margin="0,0,8,0"/>
+                <Ellipse Width="12" Height="12" Fill="#15803D" Margin="0,0,8,0"/>
+                <Ellipse Width="12" Height="12" Stroke="#15803D" StrokeThickness="2" Fill="Transparent" Margin="0,0,8,0"/>
+                <Ellipse Width="12" Height="12" Stroke="#15803D" StrokeThickness="2" Fill="Transparent"/>
+            </StackPanel>
+            <Button x:Name="NextButton"
+        Content="NEXT"
+        Click="NextButton_Click"
+        Height="44"
+        Width="220"
+        FontSize="16"
+        FontWeight="Bold"
+        Background="#15803D"
+        Foreground="White"
+        BorderThickness="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        IsEnabled="False">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#15803D"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="Cursor" Value="Arrow"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                CornerRadius="14"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#A7F3D0"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#166534"/>
+                                <!-- darker green on hover -->
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window> 
