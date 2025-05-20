@@ -7,3 +7,11 @@
         AllowsTransparency="True"
         WindowStyle="None">
     <Window.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0FDF4" Offset="0"/>
+            <GradientStop Color="#FFFFFF" Offset="0.5"/>
+            <GradientStop Color="#DCFCE7" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+
