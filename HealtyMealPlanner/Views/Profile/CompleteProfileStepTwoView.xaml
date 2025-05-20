@@ -1,0 +1,15 @@
+<Window x:Class="HealthyMealPlanner.Views.Profile.CompleteProfileStepTwoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Complete Profile - Step Two"
+        Height="1000" Width="400"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        WindowStyle="None">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0FDF4" Offset="0"/>
+            <GradientStop Color="#FFFFFF" Offset="0.5"/>
+            <GradientStop Color="#DCFCE7" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
