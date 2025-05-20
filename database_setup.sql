@@ -1,0 +1,28 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS healthymealplanner;
+USE healthymealplanner;
+
+-- Create Users table
+CREATE TABLE IF NOT EXISTS Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash VARCHAR(64) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Create UserProfiles table
+CREATE TABLE IF NOT EXISTS UserProfiles (
+    ProfileID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    DietGoal VARCHAR(50),
+    DietType VARCHAR(50),
+    Allergies TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE CASCADE
+);
+
+-- Create index for faster lookups
+CREATE INDEX idx_username_email ON Users(Username, Email); 
