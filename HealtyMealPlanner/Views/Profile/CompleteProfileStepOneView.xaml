@@ -14,6 +14,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
+        <!-- Header -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="24,24,0,0" VerticalAlignment="Top">
             <Border Background="#BBF7D0" Padding="8" CornerRadius="20" VerticalAlignment="Center">
                 <Viewbox Width="24" Height="24">
@@ -24,6 +25,7 @@
             </Border>
             <TextBlock Text="Healthy Meal Planner" Foreground="#166534" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
+        <!-- Main Content -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,0">
             <TextBlock Text="What's your diet goal?" FontSize="28" FontWeight="Bold" Foreground="#15803D" TextAlignment="Center" Margin="0,0,0,24"/>
             <StackPanel x:Name="OptionsPanel" Orientation="Vertical" Width="320" Margin="0,0,0,0">
@@ -46,6 +48,7 @@
                     </StackPanel>
                 </Border>
             </StackPanel>
+            <!-- Progress Dots -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,5">
                 <Ellipse Width="12" Height="12" Stroke="#15803D" StrokeThickness="2" Fill="Transparent" Margin="0,0,8,0"/>
                 <Ellipse Width="12" Height="12" Fill="#15803D" Margin="0,0,8,0"/>
