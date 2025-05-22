@@ -180,3 +180,63 @@ namespace HealthyMealPlanner
         }
     }
 }
+//get the user their email
+public string GetEmail(string emailOrUsername)
+{
+    using (var connection = new MySqlConnection(connectionString))
+    {
+        connection.Open();
+        string query = "SELECT Email FROM Users WHERE Email = @value OR Username = @value";
+        using (var command = new MySqlCommand(query, connection))
+        {
+            command.Parameters.AddWithValue("@value", emailOrUsername);
+            var result = command.ExecuteScalar();
+            return result?.ToString() ?? "";
+        }
+    }
+}
+//function that sends the 2FA code/reset password code and verification
+public void SendEmailCode(string recipientEmail, string code, string purpose)
+{
+    var (fromEmail, appPassword) = GetEmailSettings();
+
+    if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(appPassword))
+    {
+        MessageBox.Show("Email settings not configured in the database.", "Email Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+    }
+
+    string subject = "", body = "";
+
+    if (purpose == "2FA")
+    {
+        subject = "Your 2FA Verification Code";
+        body = $"Hello,\n\nYour verification code is: {code}\n\nIf you did not request this code, please ignore this email.\n\nKind regards,\nHealthy Meal Planner";
+    }
+    else if (purpose == "Reset")
+    {
+        subject = "Reset Your Password";
+        body = $"Hello,\n\nYou requested to reset your password. Use the following code to continue: {code}\n\nIf you didn't request this, please ignore this message.\n\nHealthy Meal Planner";
+    }
+
+    else if (purpose == "Verification")
+    {
+        subject = "Verify Your Account";
+        body = $"Hello,\n\nYour verification code is: {code}\n\nThank you for verifying your account!";
+    }
+
+    var smtpClient = new SmtpClient("smtp.gmail.com")
+    {
+        Port = 587,
+        Credentials = new NetworkCredential(fromEmail, appPassword),
+        EnableSsl = true
+    };
+
+    var message = new MailMessage(fromEmail, recipientEmail)
+    {
+        Subject = subject,
+        Body = body
+    };
+
+    smtpClient.Send(message);
+}
