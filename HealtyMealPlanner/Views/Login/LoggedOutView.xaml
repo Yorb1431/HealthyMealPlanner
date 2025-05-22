@@ -23,12 +23,29 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
+        <!-- Close Button -->
+        <Button Content="✕"
+        Width="32"
+        Height="32"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Top"
+        Margin="0,10,10,0"
+        Background="#F3F4F6"
+        Foreground="#111827"
+        FontWeight="Bold"
+        FontSize="14"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        Cursor="Hand"
+        Click="CloseButton_Click"/>
+
         <!-- Header -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,32,0,0">
             <Border Background="#BBF7D0" Padding="12" CornerRadius="30" VerticalAlignment="Center" Margin="0,0,10,0" Effect="{StaticResource ShadowEffect}">
                 <Viewbox Width="36" Height="36">
                     <Canvas Width="32" Height="32">
-                        <Path Data="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" Fill="#15803D"/>
+                        <Image Source="/Icons/broccoli.png" Width="30" Height="30"/>
                     </Canvas>
                 </Viewbox>
             </Border>
