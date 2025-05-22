@@ -1,0 +1,69 @@
+<Window x:Class="HealthyMealPlanner.Views.LoggedOutView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:HealthyMealPlanner.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d"
+        Title="Healthy Meal Planner - Home"
+        Height="600" Width="400"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        WindowStyle="None">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#DCFCE7" Offset="0"/>
+            <GradientStop Color="#FFFFFF" Offset="0.5"/>
+            <GradientStop Color="#F0FDF4" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,32,0,0">
+            <Border Background="#BBF7D0" Padding="12" CornerRadius="30" VerticalAlignment="Center" Margin="0,0,10,0" Effect="{StaticResource ShadowEffect}">
+                <Viewbox Width="36" Height="36">
+                    <Canvas Width="32" Height="32">
+                        <Path Data="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" Fill="#15803D"/>
+                    </Canvas>
+                </Viewbox>
+            </Border>
+            <TextBlock Text="Healthy Meal Planner" Foreground="#166534" FontWeight="Bold" FontSize="28" VerticalAlignment="Center"/>
+        </StackPanel>
+        <!-- Main Content -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+            <Border Background="#FFFFFFA0" CornerRadius="28" Padding="32" Margin="24,0,24,0" Effect="{StaticResource ShadowEffect}">
+                <StackPanel>
+                    <TextBlock Text="Start jouw reis naar een gezondere levensstijl! Log in of maak een nieuw account aan om je maaltijden gemakkelijk te plannen."
+                               Foreground="#374151" FontSize="16" TextAlignment="Center" Margin="0,0,0,16"/>
+                    <StackPanel Orientation="Vertical" Margin="0,16,0,0" HorizontalAlignment="Center">
+                        <Border CornerRadius="14" Background="#FFFFFF80" Margin="0,0,0,12">
+                            <Button Content="LOG IN" Click="LoginButton_Click" Width="180" Height="44" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="#15803D" BorderBrush="#15803D" BorderThickness="1.5"/>
+                        </Border>
+                        <Border CornerRadius="14" Background="#15803D">
+                            <Button Content="REGISTER" Click="RegisterButton_Click" Width="180" Height="44" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" BorderThickness="0"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,2">
+                <TextBlock Text="© 2025 Healthy Meal Planner | All rights reserved | " Foreground="#6B7280" FontSize="12"/>
+                <TextBlock Text="Yorbe &amp; Jonas" Foreground="#15803D" FontWeight="SemiBold" FontSize="12"/>
+            </StackPanel>
+            <Button Background="Transparent" BorderThickness="0" Padding="0" ToolTip="GitHub" Cursor="Hand" Click="GitHubButton_Click">
+                <Viewbox Width="28" Height="28">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M12 2C6.13 2 2 6.13 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.87-4.87-10-10-10z" Fill="#15803D"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window> 
