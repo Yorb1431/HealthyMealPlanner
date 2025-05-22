@@ -40,7 +40,7 @@
                 <Border Background="#BBF7D0" Padding="8" CornerRadius="20" VerticalAlignment="Center">
                     <Viewbox Width="24" Height="24">
                         <Canvas Width="24" Height="24">
-                            <Path Data="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10C22 6.48 17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" Fill="#15803D"/>
+                            <Image Source="/Icons/broccoli.png" Width="30" Height="30"/>
                         </Canvas>
                     </Viewbox>
                 </Border>
@@ -52,12 +52,54 @@
             <TextBlock Text="Log in" FontSize="32" FontWeight="Bold" Foreground="#166534" Margin="32,0,0,24"/>
             <Border Background="#FFFFFFA0" CornerRadius="28" Padding="32" Margin="24,0,24,0" Effect="{StaticResource ShadowEffect}">
                 <StackPanel>
-                    <TextBlock Text="E-mail address" Foreground="#374151" FontSize="13" Margin="0,0,0,4"/>
+                    <TextBlock Text="E-mail address or username" Foreground="#374151" FontSize="13" Margin="0,0,0,4"/>
                     <TextBox x:Name="EmailTextBox" Height="38" FontSize="15" Padding="10,0" Background="#F0FDF4" BorderBrush="#15803D" BorderThickness="1" Margin="0,0,0,16"/>
                     <TextBlock Text="Password" Foreground="#374151" FontSize="13" Margin="0,0,0,4"/>
-                    <PasswordBox x:Name="PasswordBox" Height="38" FontSize="15" Padding="10,0" Background="#F0FDF4" BorderBrush="#15803D" BorderThickness="1" Margin="0,0,0,24"/>
+                    <Grid Height="38" Margin="0,0,0,24">
+                        <!-- Hidden password -->
+                        <PasswordBox x:Name="PasswordBox"
+                             FontSize="15"
+                             Padding="10,0,30,0"
+                             Background="#F0FDF4"
+                             BorderBrush="#15803D"
+                             BorderThickness="1"
+                             VerticalContentAlignment="Center"
+                             Visibility="Visible"/>     
+
+                        <!-- Visible password -->
+                        <TextBox x:Name="VisiblePasswordBox"
+                             FontSize="15"
+                             Padding="10,0,30,0"
+                             Background="#F0FDF4"
+                             BorderBrush="#15803D"
+                             BorderThickness="1"
+                             VerticalContentAlignment="Center"
+                             Visibility="Collapsed"/>
+
+                        <!-- Toggle button -->
+                        <Button x:Name="TogglePasswordButton"
+                            Content="👁"
+                            Width="24"
+                            Height="24"
+                            FontSize="12"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="TogglePasswordButton_Click"/>
+                        
+
+
+                    </Grid>
                     <TextBlock x:Name="PasswordError" Text="Password must have a capital letter, a number, and a special character." Foreground="#EF4444" FontSize="12" Visibility="Collapsed" Margin="0,0,0,8" TextWrapping="Wrap" MaxWidth="250"/>
-                    <Border CornerRadius="14" Background="#15803D" Margin="0,0,0,0">
+                    <TextBlock FontSize="13"><Run Text="Forgot your password? " /><Run Text=" "/><Run Text="Reset password"
+                         Foreground="#15803D"
+                         TextDecorations="Underline"
+                         Cursor="Hand"
+                         MouseDown="ResetPassword_MouseDown"/></TextBlock> 
+
+                    <Border CornerRadius="14" Background="#15803D" Margin="0,10,0,0">
+                        
                         <Button Content="LOG IN" Click="LoginButton_Click" Height="44" FontSize="16" FontWeight="Bold" Background="Transparent" Foreground="White" BorderThickness="0"/>
                     </Border>
                 </StackPanel>
