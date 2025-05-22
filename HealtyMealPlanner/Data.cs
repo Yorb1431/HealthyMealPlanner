@@ -240,3 +240,27 @@ public void SendEmailCode(string recipientEmail, string code, string purpose)
 
     smtpClient.Send(message);
 }
+//get username from email
+public string GetUsername(string emailOrUsername)
+{
+    try
+    {
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+            string query = "SELECT Username FROM Users WHERE Email = @Email OR Username = @Username";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Email", emailOrUsername);
+                command.Parameters.AddWithValue("@Username", emailOrUsername);
+                var result = command.ExecuteScalar();
+                return result?.ToString() ?? string.Empty;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error retrieving username: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return string.Empty;
+    }
+}
