@@ -264,3 +264,25 @@ public string GetUsername(string emailOrUsername)
         return string.Empty;
     }
 }
+//updates user their password(called when the verifiy code is correct in the reset password screen
+ public bool UpdateUserPassword(string email, string newPassword)
+ {
+     try
+     {
+         string hash = HashPassword(newPassword);
+         using var conn = new MySqlConnection(connectionString);
+         conn.Open();
+
+         string query = "UPDATE Users SET PasswordHash = @hash WHERE Email = @Email";
+         using var cmd = new MySqlCommand(query, conn);
+         cmd.Parameters.AddWithValue("@hash", hash);
+         cmd.Parameters.AddWithValue("@Email", email);
+
+         return cmd.ExecuteNonQuery() > 0;
+     }
+     catch (Exception ex)
+     {
+         MessageBox.Show($"Error updating password: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+         return false;
+     }
+ }
