@@ -178,9 +178,7 @@ namespace HealthyMealPlanner
                 }
             }
         }
-    }
-}
-//get the user their email
+        //get the user their email
 public string GetEmail(string emailOrUsername)
 {
     using (var connection = new MySqlConnection(connectionString))
@@ -286,3 +284,5 @@ public string GetUsername(string emailOrUsername)
          return false;
      }
  }
+    }
+}
