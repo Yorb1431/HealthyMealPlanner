@@ -446,6 +446,54 @@ public int GetUserIdByUsername(string username)
     }
 }
 
+
+    public List<int> GetUserAllergyIds(int userId)
+        {
+            var allergyIds = new List<int>();
+            string query = "SELECT AllergyID FROM UserAllergies WHERE UserID = @UserID";
+
+            using (var connection = new MySqlConnection(connectionString))
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@UserID", userId);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        allergyIds.Add(reader.GetInt32("AllergyID"));
+                    }
+                }
+            }
+            return allergyIds;
+        }
+
+    public Dictionary<int, List<int>> GetAllRecipeAllergyLinks()
+        {
+            var dict = new Dictionary<int, List<int>>();
+            string query = "SELECT RecipeID, AllergyID FROM RecipeAllergies";
+
+            using (var connection = new MySqlConnection(connectionString))
+            using (var command = new MySqlCommand(query, connection))
+            {
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int recipeId = reader.GetInt32("RecipeID");
+                        int allergyId = reader.GetInt32("AllergyID");
+
+                        if (!dict.ContainsKey(recipeId))
+                            dict[recipeId] = new List<int>();
+
+                        dict[recipeId].Add(allergyId);
+                    }
+                }
+            }
+            return dict;
+        }
+
         
     }
 }
