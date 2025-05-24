@@ -284,5 +284,168 @@ public string GetUsername(string emailOrUsername)
          return false;
      }
  }
+     public class FullUserProfile
+ {
+     public string Email { get; set; }
+     public string FullName { get; set; }
+     public int Age { get; set; }
+     public string Gender { get; set; }
+     public double Height { get; set; }
+     public double Weight { get; set; }
+     public string ActivityLevel { get; set; }
+     public string DietType { get; set; }
+     public List<string> Allergies { get; set; }
+     public string ProfileImagePath { get; set; }
+     public string DietGoal { get; set; }
+     public bool IsMetric { get; set; }
+     public string Role { get; set; }
+
+     public bool IsVerified { get; set; }
+ }
+
+ public FullUserProfile GetFullUserProfile(string username)
+ {
+     var userId = GetUserIdByUsername(username);
+     var profile = new FullUserProfile { Allergies = new List<string>() };
+
+     using (var conn = new MySqlConnection(connectionString))
+     {
+         conn.Open();
+
+         // Email
+         using (var cmd = new MySqlCommand("SELECT Email FROM Users WHERE Username = @Username", conn))
+         {
+             cmd.Parameters.AddWithValue("@Username", username);
+             profile.Email = cmd.ExecuteScalar()?.ToString() ?? "";
+         }
+
+         // Role
+         using (var cmd = new MySqlCommand("SELECT Role FROM Users WHERE Username = @Username", conn))
+         {
+             cmd.Parameters.AddWithValue("@Username", username);
+             profile.Role = cmd.ExecuteScalar()?.ToString() ?? "User";
+         }
+
+         // Profile fields
+         using (var cmd = new MySqlCommand(@"SELECT FullName, Age, Gender, Height, Weight, ActivityLevel, DietType, IsMetric, ProfileImagePath, IsVerified, DietGoal 
+                                     FROM UserProfiles WHERE UserID = @UserID", conn))
+         {
+             cmd.Parameters.AddWithValue("@UserID", userId);
+             using (var reader = cmd.ExecuteReader())
+             {
+                 if (reader.Read())
+                 {
+                     profile.FullName = reader.IsDBNull(0) ? "" : reader.GetString(0);
+                     profile.Age = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                     profile.Gender = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                     profile.Height = reader.IsDBNull(3) ? 0 : reader.GetDouble(3);
+                     profile.Weight = reader.IsDBNull(4) ? 0 : reader.GetDouble(4);
+                     profile.ActivityLevel = reader.IsDBNull(5) ? "" : reader.GetString(5);
+                     profile.DietType = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                     profile.IsMetric = reader.IsDBNull(7) ? true : reader.GetBoolean(7);
+                     profile.ProfileImagePath = reader.IsDBNull(8) ? null : reader.GetString(8);
+                     profile.IsVerified = !reader.IsDBNull(9) && reader.GetBoolean(9);
+                     profile.DietGoal = reader.IsDBNull(10) ? "" : reader.GetString(10);
+                 }
+             }
+         }
+
+         // Allergies (joined from ID to name)
+         using (var cmd = new MySqlCommand(@"SELECT a.Name 
+                                     FROM UserAllergies ua 
+                                     JOIN Allergies a ON ua.AllergyID = a.AllergyID 
+                                     WHERE ua.UserID = @UserID", conn))
+         {
+             cmd.Parameters.AddWithValue("@UserID", userId);
+             using (var reader = cmd.ExecuteReader())
+             {
+                 while (reader.Read())
+                 {
+                     profile.Allergies.Add(reader.GetString(0));
+                 }
+             }
+         }
+     }
+
+     return profile;
+ }
+
+
+public List<Recipe> GetAllRecipesWithIngredients()
+{
+    var recipes = new Dictionary<int, Recipe>();
+
+    using (var conn = new MySqlConnection(connectionString))
+    {
+        conn.Open();
+        string query = @"SELECT 
+                        r.RecipeID, r.Title, r.Description, r.Instructions, 
+                        r.PrepTime, r.CookTime, r.Servings, r.Calories, r.ImagePath,
+                        r.CategoryID, c.Name AS CategoryName,
+                        i.Name AS IngredientName
+                    FROM recipes r
+                    LEFT JOIN recipeingredients ri ON r.RecipeID = ri.RecipeID
+                    LEFT JOIN ingredients i ON ri.IngredientID = i.IngredientID
+                    LEFT JOIN categories c ON r.CategoryID = c.CategoryID;";
+
+        using var cmd = new MySqlCommand(query, conn);
+        using var reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            int id = reader.GetInt32("RecipeID");
+
+            if (!recipes.ContainsKey(id))
+            {
+                var instructionText = reader["Instructions"]?.ToString() ?? "";
+                recipes[id] = new Recipe
+                {
+                    RecipeID = id,
+                    Title = reader.GetString("Title"),
+                    Description = reader["Description"]?.ToString(),
+                    Instructions = instructionText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).ToList(),
+                    PrepTime = reader.GetInt32("PrepTime"),
+                    CookTime = reader.GetInt32("CookTime"),
+                    Servings = reader.GetInt32("Servings"),
+                    Calories = reader.GetInt32("Calories"),
+                    ImagePath = reader["ImagePath"]?.ToString(),
+                    Category = reader["CategoryName"]?.ToString(),
+                    Ingredients = new List<string>()
+                };
+            }
+
+            if (!reader.IsDBNull(reader.GetOrdinal("IngredientName")))
+            {
+                recipes[id].Ingredients.Add(reader.GetString("IngredientName"));
+            }
+        }
+    }
+
+    return recipes.Values.ToList();
+}
+public int GetUserIdByUsername(string username)
+{
+    try
+    {
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+            string query = "SELECT UserID FROM Users WHERE Username = @Username";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Username", username);
+                var result = command.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : -1;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Error getting user ID: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return -1;
+    }
+}
+
+        
     }
 }
