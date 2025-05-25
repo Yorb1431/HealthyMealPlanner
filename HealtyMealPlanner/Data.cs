@@ -559,6 +559,43 @@ public int GetUserIdByUsername(string username)
             long count = (long)cmd.ExecuteScalar();
             return count > 0;
         }
+
+    //if recipeid is not favorited for a userid it will add the recipeid with the userid to the favorites table, if the button is pressed and the recipe is already in the table favorites" it will be removed
+    public void ToggleFavorite(int userId, int recipeId)
+        {
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            string checkQuery = "SELECT COUNT(*) FROM favorites WHERE UserID = @userId AND RecipeID = @recipeId";
+            using var checkCmd = new MySqlCommand(checkQuery, conn);
+            checkCmd.Parameters.AddWithValue("@userId", userId);
+            checkCmd.Parameters.AddWithValue("@recipeId", recipeId);
+            long exists = (long)checkCmd.ExecuteScalar();
+
+            string query = exists > 0
+                ? "DELETE FROM favorites WHERE UserID = @userId AND RecipeID = @recipeId"
+                : "INSERT INTO favorites (UserID, RecipeID) VALUES (@userId, @recipeId)";
+
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Parameters.AddWithValue("@recipeId", recipeId);
+            cmd.ExecuteNonQuery();
+        }
+        
+    //removes the link between the userId and the recipeId
+    public void RemoveFavorite(int userId, int recipeId)
+        {
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            string query = "DELETE FROM favorites WHERE UserID = @userId AND RecipeID = @recipeId";
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Parameters.AddWithValue("@recipeId", recipeId);
+            cmd.ExecuteNonQuery();
+        }
+
+        
         
     }
 }
