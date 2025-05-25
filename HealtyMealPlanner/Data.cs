@@ -494,6 +494,71 @@ public int GetUserIdByUsername(string username)
             return dict;
         }
 
+    //returns a list with all the recipes the user has favorited(which is saved in the DB in fabvorites)
+    public List<Recipe> GetFavoriteRecipes(int userId)
+        {
+            var recipes = new Dictionary<int, Recipe>();
+
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            string query = @"
+            SELECT r.RecipeID, r.Title, r.Description, r.Instructions, 
+                   r.PrepTime, r.CookTime, r.Servings, r.Calories, r.ImagePath,
+                   i.Name AS IngredientName
+            FROM recipes r
+            JOIN favorites f ON f.RecipeID = r.RecipeID
+            LEFT JOIN recipeingredients ri ON r.RecipeID = ri.RecipeID
+            LEFT JOIN ingredients i ON ri.IngredientID = i.IngredientID
+            WHERE f.UserID = @userId";
+
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@userId", userId);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = reader.GetInt32("RecipeID");
+                if (!recipes.ContainsKey(id))
+                {
+                    var instructionText = reader["Instructions"]?.ToString() ?? "";
+                    recipes[id] = new Recipe
+                    {
+                        RecipeID = id,
+                        Title = reader.GetString("Title"),
+                        Description = reader["Description"]?.ToString(),
+                        Instructions = instructionText.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries).ToList(),
+                        PrepTime = reader.GetInt32("PrepTime"),
+                        CookTime = reader.GetInt32("CookTime"),
+                        Servings = reader.GetInt32("Servings"),
+                        Calories = reader.GetInt32("Calories"),
+                        ImagePath = reader["ImagePath"]?.ToString(),
+                        Ingredients = new List<string>()
+                    };
+                }
+
+                if (!reader.IsDBNull(reader.GetOrdinal("IngredientName")))
+                {
+                    recipes[id].Ingredients.Add(reader.GetString("IngredientName"));
+                }
+            }
+
+            return recipes.Values.ToList();
+        }
+        //returns if a given recipeId is favorited by a user with userID
+    public bool IsRecipeFavorited(int userId, int recipeId)
+        {
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
+
+            string query = "SELECT COUNT(*) FROM favorites WHERE UserID = @userId AND RecipeID = @recipeId";
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Parameters.AddWithValue("@recipeId", recipeId);
+
+            long count = (long)cmd.ExecuteScalar();
+            return count > 0;
+        }
         
     }
 }
