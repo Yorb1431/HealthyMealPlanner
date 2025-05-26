@@ -605,7 +605,59 @@ public int GetUserIdByUsername(string username)
             var result = cmd.ExecuteScalar();
             return result?.ToString() ?? "Omnivore";
         }
-        
+
+    //saves the mealplan in the databse with the userid, the meaplan itself and the planName
+    public bool SaveMealPlan(string planName, int userId, Dictionary<string, List<MealEntry>> mealPlan)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Step 1: Insert into MealPlans table
+                        var insertMealPlanCmd = new MySqlCommand(
+                            "INSERT INTO MealPlans (UserID, Name, CreatedDate) VALUES (@UserID, @Name, @CreatedDate)", connection, transaction);
+                        insertMealPlanCmd.Parameters.AddWithValue("@UserID", userId);
+                        insertMealPlanCmd.Parameters.AddWithValue("@Name", planName);
+                        insertMealPlanCmd.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                        insertMealPlanCmd.ExecuteNonQuery();
+
+                        long mealPlanId = insertMealPlanCmd.LastInsertedId;
+
+                        // Step 2: Insert into MealPlanRecipes
+                        foreach (var day in mealPlan)
+                        {
+                            string dayOfWeek = day.Key;
+
+                            foreach (var entry in day.Value)
+                            {
+                                var insertItemCmd = new MySqlCommand(
+                                    "INSERT INTO MealPlanItems (MealPlanID, RecipeID, MealType, DayOfWeek) VALUES (@MealPlanID, @RecipeID, @MealType, @DayOfWeek)",
+                                    connection, transaction);
+
+                                insertItemCmd.Parameters.AddWithValue("@MealPlanID", mealPlanId);
+                                insertItemCmd.Parameters.AddWithValue("@RecipeID", entry.Recipe.RecipeID);
+                                insertItemCmd.Parameters.AddWithValue("@MealType", entry.MealType);
+                                insertItemCmd.Parameters.AddWithValue("@DayOfWeek", dayOfWeek);
+
+                                insertItemCmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error saving meal plan: " + ex.Message);
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
         
     }
 }
