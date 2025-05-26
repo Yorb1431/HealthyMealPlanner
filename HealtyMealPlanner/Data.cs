@@ -616,7 +616,7 @@ public int GetUserIdByUsername(string username)
                 {
                     try
                     {
-                        // Step 1: Insert into MealPlans table
+                        //insert into MealPlans table
                         var insertMealPlanCmd = new MySqlCommand(
                             "INSERT INTO MealPlans (UserID, Name, CreatedDate) VALUES (@UserID, @Name, @CreatedDate)", connection, transaction);
                         insertMealPlanCmd.Parameters.AddWithValue("@UserID", userId);
@@ -626,7 +626,7 @@ public int GetUserIdByUsername(string username)
 
                         long mealPlanId = insertMealPlanCmd.LastInsertedId;
 
-                        // Step 2: Insert into MealPlanRecipes
+                        //insert into MealPlanRecipes
                         foreach (var day in mealPlan)
                         {
                             string dayOfWeek = day.Key;
