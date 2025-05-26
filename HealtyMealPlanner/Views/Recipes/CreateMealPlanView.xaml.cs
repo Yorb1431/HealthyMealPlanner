@@ -1,4 +1,4 @@
-﻿using HealthyMealPlanner.Models;
+using HealthyMealPlanner.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -23,6 +23,29 @@ namespace HealthyMealPlanner.Views
 
             RenderEditor();
         }
+        
+        //checkt of alle dagen een maaltijd hebben
+        private bool IsMealPlanFull()
+        {
+            string[] requiredMeals = { "Breakfast", "Lunch", "Dinner" };
+
+            foreach (var day in _mealPlan)
+            {
+                var mealTypes = day.Value
+                    .Where(e => e.Recipe != null)
+                    .Select(e => e.MealType)
+                    .ToList();
+
+                foreach (var required in requiredMeals)
+                {
+                    if (!mealTypes.Contains(required))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
         //tekent de volledige mealplan in de UI
         private void RenderEditor()
         {
@@ -119,6 +142,7 @@ namespace HealthyMealPlanner.Views
                 dayPanel.Children.Add(wrap);
                 MealPlanEditor.Items.Add(dayPanel);
             }
+            SaveButton.IsEnabled = IsMealPlanFull();
         }
 
         //verwijdert het recept uit de mealplan
