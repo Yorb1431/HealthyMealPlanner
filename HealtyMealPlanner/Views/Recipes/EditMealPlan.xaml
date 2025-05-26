@@ -1,4 +1,4 @@
-﻿<Window x:Class="HealthyMealPlanner.Views.EditMealPlanView"
+<Window x:Class="HealthyMealPlanner.Views.EditMealPlanView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Edit Meal Plan"
@@ -12,7 +12,6 @@
     <Border Background="White" CornerRadius="16" Padding="16" BorderBrush="#D1D5DB" BorderThickness="1">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <!-- Header -->
                 <DockPanel Margin="0,0,0,16">
                     <TextBlock Text="✏️ Edit Your Meal Plan"
                                FontSize="24"
@@ -28,10 +27,9 @@
                             BorderThickness="0"
                             Margin="10,0,20,0"/>
                 </DockPanel>
-
-                <!-- Plan Content -->
                 <ItemsControl x:Name="MealPlanEditor" />
-                <Button Content="💾 Save Changes"
+                <Button x:Name="SaveButton" 
+                    Content="💾 Save Changes"
                     Width="160"
                     Height="36"
                     Background="#16A34A"
