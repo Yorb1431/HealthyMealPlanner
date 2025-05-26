@@ -1,4 +1,4 @@
-﻿using HealthyMealPlanner.Models;
+using HealthyMealPlanner.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -25,6 +25,27 @@ namespace HealthyMealPlanner.Views
             _mainWindow = mainWindow;
 
             RenderEditor();
+        }
+
+        private bool IsMealPlanFull()
+        {
+            string[] requiredMeals = { "Breakfast", "Lunch", "Dinner" };
+
+            foreach (var day in _mealPlan)
+            {
+                var mealTypes = day.Value
+                    .Where(e => e.Recipe != null)
+                    .Select(e => e.MealType)
+                    .ToList();
+
+                foreach (var required in requiredMeals)
+                {
+                    if (!mealTypes.Contains(required))
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         //bouwt de visuele strucutuur op van onze meaplan
@@ -126,6 +147,7 @@ namespace HealthyMealPlanner.Views
                 dayPanel.Children.Add(wrap);
                 MealPlanEditor.Items.Add(dayPanel);
             }
+            SaveButton.IsEnabled = IsMealPlanFull();
         }
 
 
