@@ -1,4 +1,4 @@
-﻿<Window x:Class="HealthyMealPlanner.Views.CreateMealPlanView"
+<Window x:Class="HealthyMealPlanner.Views.CreateMealPlanView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Create Meal Plan"
@@ -30,7 +30,8 @@
 
                 <ItemsControl x:Name="MealPlanEditor"/>
 
-                <Button Content="💾 Save Meal Plan"
+                <Button x:Name="SaveButton"
+                        Content="💾 Save Meal Plan"
                         Width="180"
                         Height="36"
                         Background="#16A34A"
