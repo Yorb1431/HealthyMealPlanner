@@ -658,6 +658,50 @@ public int GetUserIdByUsername(string username)
                 }
             }
         }
+
+    //updates existing mealpan with new recipes chosen by the user in editmealplan
+    public bool UpdateMealPlan(int userId, int planId, Dictionary<string, List<MealEntry>> updatedPlan)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Step 1: Delete old meals
+                        var deleteCmd = new MySqlCommand("DELETE FROM MealPlanItems WHERE MealPlanID = @MealPlanID", connection, transaction);
+                        deleteCmd.Parameters.AddWithValue("@MealPlanID", planId);
+                        deleteCmd.ExecuteNonQuery();
+        
+                        // Step 2: Insert updated meals
+                        foreach (var day in updatedPlan)
+                        {
+                            foreach (var entry in day.Value)
+                            {
+                                var insertCmd = new MySqlCommand(@"
+                            INSERT INTO MealPlanItems (MealPlanID, DayOfWeek, MealType, RecipeID)
+                            VALUES (@MealPlanID, @DayOfWeek, @MealType, @RecipeID)", connection, transaction);
+        
+                                insertCmd.Parameters.AddWithValue("@MealPlanID", planId);
+                                insertCmd.Parameters.AddWithValue("@DayOfWeek", day.Key);
+                                insertCmd.Parameters.AddWithValue("@MealType", entry.MealType);
+                                insertCmd.Parameters.AddWithValue("@RecipeID", entry.Recipe.RecipeID);
+                                insertCmd.ExecuteNonQuery();
+                            }
+                        }
+        
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
         
     }
 }
