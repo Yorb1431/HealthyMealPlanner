@@ -594,7 +594,17 @@ public int GetUserIdByUsername(string username)
             cmd.Parameters.AddWithValue("@recipeId", recipeId);
             cmd.ExecuteNonQuery();
         }
+    //get diettype of user    
+    public string GetDietTypeByUserId(int userId)
+        {
+            using var conn = new MySqlConnection(connectionString);
+            conn.Open();
 
+            using var cmd = new MySqlCommand("SELECT DietType FROM UserProfiles WHERE UserID = @UserId", conn);
+            cmd.Parameters.AddWithValue("@UserId", userId);
+            var result = cmd.ExecuteScalar();
+            return result?.ToString() ?? "Omnivore";
+        }
         
         
     }
