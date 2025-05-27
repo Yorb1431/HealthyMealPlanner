@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Complete Profile - Step One"
-        Height="1000" Width="400"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         WindowStyle="None">
@@ -25,23 +25,23 @@
             </Border>
             <TextBlock Text="Healthy Meal Planner" Foreground="#166534" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
-        <!-- Main Content -->
+        <!-- Main  -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,0">
             <TextBlock Text="What's your diet goal?" FontSize="28" FontWeight="Bold" Foreground="#15803D" TextAlignment="Center" Margin="0,0,0,24"/>
             <StackPanel x:Name="OptionsPanel" Orientation="Vertical" Width="320" Margin="0,0,0,0">
-                <Border x:Name="OptionEatHealthy" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                <Border x:Name="OptionEatHealthy" Tag="Maintain Weight" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
                     <StackPanel>
                         <TextBlock Text="Eat healthy" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
                         <TextBlock Text="Have balanced diet and stay lean" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                <Border x:Name="OptionLooseWeight" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                <Border x:Name="OptionLooseWeight" Tag="Lose Weight" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,12" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
                     <StackPanel>
                         <TextBlock Text="Loose weight" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
                         <TextBlock Text="Get lean without struggle" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>
-                <Border x:Name="OptionBulkUp" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,0" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
+                <Border x:Name="OptionBulkUp" Tag="Gain Weight" Background="White" CornerRadius="20" Padding="18" Margin="0,0,0,0" Cursor="Hand" MouseLeftButtonUp="Option_Click" Effect="{StaticResource ShadowEffect}">
                     <StackPanel>
                         <TextBlock Text="Bulk up" FontSize="18" FontWeight="Bold" Foreground="#111827"/>
                         <TextBlock Text="Stay active and get stronger" FontSize="13" Foreground="#6B7280" Margin="0,4,0,0"/>
