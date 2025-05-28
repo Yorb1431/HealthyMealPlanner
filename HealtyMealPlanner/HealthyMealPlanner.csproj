@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -19,6 +19,8 @@
     <Compile Include="App.xaml.cs" DependentUpon="App.xaml" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Data.cs" />
+    <Compile Include="Models\MealEntry.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Page Include="Views\**\*.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -28,8 +30,213 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Dashboard.xaml" />
+    <None Remove="Icons\broccoli.png" />
+    <None Remove="Icons\celery.png" />
+    <None Remove="Icons\checkmark.png" />
+    <None Remove="Icons\crustacean.png" />
+    <None Remove="Icons\egg.png" />
+    <None Remove="Icons\fish.png" />
+    <None Remove="Icons\milk.png" />
+    <None Remove="Icons\mustard.png" />
+    <None Remove="Icons\nut.png" />
+    <None Remove="Icons\sesame.png" />
+    <None Remove="Icons\soybean.png" />
+    <None Remove="Icons\wheat.png" />
+    <None Remove="Recipes\BakedPorkChops.jpg" />
+    <None Remove="Recipes\baked_salmon_crust.jpeg" />
+    <None Remove="Recipes\BBQRibs.jpg" />
+    <None Remove="Recipes\beef_stroganoff.jpg" />
+    <None Remove="Recipes\CajunChickenCaesarSalad.jpg" />
+    <None Remove="Recipes\ChickenParmesan.jpg" />
+    <None Remove="Recipes\ChickenWaffles.jpg" />
+    <None Remove="Recipes\ClubSandwich.jpeg" />
+    <None Remove="Recipes\EasyPaella.jpg" />
+    <None Remove="Recipes\FishTacos.jpg" />
+    <None Remove="Recipes\FlankSteakTacos.jpeg" />
+    <None Remove="Recipes\flatbread.jpg" />
+    <None Remove="Recipes\flatbread_pizza.jpg" />
+    <None Remove="Recipes\greek_yogurt_bowl.jpg" />
+    <None Remove="Recipes\GrilledTeriyakiChicken.jpeg" />
+    <None Remove="Recipes\grilled_chicken_salad.jpg" />
+    <None Remove="Recipes\GroundBeefBroccoliStirFry.jpeg" />
+    <None Remove="Recipes\Jambalaya.jpeg" />
+    <None Remove="Recipes\MongolianBeef.jpg" />
+    <None Remove="Recipes\quinoa_bowl.jpg" />
+    <None Remove="Recipes\RoastBeefBurritos.jpg" />
+    <None Remove="Recipes\SheetPanChickenFajitas.jpg" />
+    <None Remove="Recipes\ShrimpScampi.jpg" />
+    <None Remove="Recipes\SloppyJoeShepherdsPie.jpg" />
+    <None Remove="Recipes\spaghetti_bolognese.jpeg" />
+    <None Remove="Recipes\StuffedBellPeppers.jpeg" />
+    <None Remove="Recipes\SweetLambCurry.jpg" />
+    <None Remove="Recipes\tofu_stirfry.jpg" />
+    <None Remove="UserImages\defaultpicture.png" />
+    <None Remove="UserImages\person1.jpg" />
+    <None Remove="UserImages\person2.jpeg" />
+    <None Remove="UserImages\person5.jpg" />
+    <None Remove="UserImages\person6.jpg" />
+    <None Remove="UserImages\person7.jpeg" />
+    <None Remove="Views\EditUserWindow.xaml" />
+    <None Remove="Views\Homepage\BrowseIngredientsWindow.xaml" />
+    <None Remove="Views\Homepage\MealPlansPage.xaml" />
+    <None Remove="Views\Homepage\MealPlanWindow.xaml" />
+    <None Remove="Views\Homepage\SaveMealPlanWindow.xaml" />
+    <None Remove="Views\Login\ResetPasswordRequestWindow.xaml" />
+    <None Remove="Views\Login\SetNewPasswordWindow.xaml" />
+    <None Remove="Views\Login\TwoFactorAuthWindow.xaml" />
+    <None Remove="Views\Login\VerifyResetCodeWindow.xaml" />
+    <None Remove="Views\PasswordInputDialog.xaml" />
+    <None Remove="Views\Profile\CompleteProfileStepFourView.xaml" />
+    <None Remove="Views\Profile\UserDetailsWindow.xaml" />
+    <None Remove="Views\Recipes\CreateMealPlanView.xaml" />
+    <None Remove="Views\Recipes\EditMealPlan.xaml" />
+    <None Remove="Views\Recipes\FavoritePage.xaml" />
+    <None Remove="Views\Recipes\RecipeView.xaml" />
+    <None Remove="Views\Recipes\SelectPlanTypeWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.3.0" />
     <PackageReference Include="MySqlConnector" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\broccoli.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\celery.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\checkmark.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\crustacean.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\egg.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\fish.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\milk.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\nut.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\sesame.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\soybean.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\wheat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\BakedPorkChops.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\baked_salmon_crust.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\BBQRibs.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\beef_stroganoff.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\CajunChickenCaesarSalad.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\ChickenParmesan.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\ChickenWaffles.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\ClubSandwich.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\EasyPaella.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\FishTacos.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\FlankSteakTacos.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\flatbread.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\flatbread_pizza.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\greek_yogurt_bowl.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\GrilledTeriyakiChicken.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\grilled_chicken_salad.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\GroundBeefBroccoliStirFry.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\Jambalaya.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\MongolianBeef.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\quinoa_bowl.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\RoastBeefBurritos.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\SheetPanChickenFajitas.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\ShrimpScampi.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\SloppyJoeShepherdsPie.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\spaghetti_bolognese.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\StuffedBellPeppers.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\SweetLambCurry.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Recipes\tofu_stirfry.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="UserImages\defaultpicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserImages\person1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserImages\person2.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserImages\person5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserImages\person6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserImages\person7.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
