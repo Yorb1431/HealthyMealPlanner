@@ -1,0 +1,72 @@
+﻿<Window x:Class="HealthyMealPlanner.Views.UserDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="User Details"
+        Height="600" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        Background="#F9FAFB">
+    <ScrollViewer Margin="20">
+        <StackPanel>
+            <TextBlock Text="User Details"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#16A34A"
+                       Margin="0,0,0,20"
+                       TextAlignment="Center"/>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Full Name:" FontWeight="Bold"/>
+                <TextBlock x:Name="FullNameText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Email:" FontWeight="Bold"/>
+                <TextBlock x:Name="EmailText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Age:" FontWeight="Bold"/>
+                <TextBlock x:Name="AgeText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Gender:" FontWeight="Bold"/>
+                <TextBlock x:Name="GenderText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Activity Level:" FontWeight="Bold"/>
+                <TextBlock x:Name="ActivityText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Diet Type:" FontWeight="Bold"/>
+                <TextBlock x:Name="DietTypeText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Diet Goal:" FontWeight="Bold"/>
+                <TextBlock x:Name="GoalText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Allergies:" FontWeight="Bold"/>
+                <TextBlock x:Name="AllergiesText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Unit Preference:" FontWeight="Bold"/>
+                <TextBlock x:Name="UnitText"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock Text="Verified:" FontWeight="Bold"/>
+                <TextBlock x:Name="VerifiedText"/>
+            </StackPanel>
+
+            <Button Content="Close" Margin="0,20,0,0" HorizontalAlignment="Right" Width="80" Click="Close_Click"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

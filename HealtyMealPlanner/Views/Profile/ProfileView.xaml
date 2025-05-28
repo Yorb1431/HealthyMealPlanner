@@ -1,0 +1,151 @@
+<Window x:Class="HealthyMealPlanner.ProfileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Profile Overview"
+        WindowState="Maximized"
+        Background="#F9FAFB"
+        WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="40">
+            <StackPanel>
+                <TextBlock Text="Profile" FontSize="36" FontWeight="Bold" Foreground="#111827" Margin="0,0,0,30"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Profile Picture and Basic Info -->
+                    <StackPanel Grid.Column="0" Margin="0,0,40,0">
+                        <Ellipse Width="180" Height="180" Stroke="#15803D" StrokeThickness="3" x:Name="ProfileImageEllipse">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="ProfileImageBrush" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock x:Name="UsernameText" Text="Username" FontSize="24" FontWeight="Bold" Foreground="#111827" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+                        <TextBlock x:Name="RoleText" Text="ADMIN" FontSize="16" FontWeight="Bold" Foreground="#B91C1C" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                        <TextBlock x:Name="EmailText" Text="email@example.com" FontSize="16" Foreground="#6B7280" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Profile Details -->
+                    <StackPanel Grid.Column="1">
+                        <GroupBox Header="Personal Information" Margin="0,0,0,20">
+                            <StackPanel Margin="10">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Full Name:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="FullNameText" Grid.Column="1" Text="John Doe"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Age:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="AgeText" Grid.Column="1" Text="25"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Gender:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="GenderText" Grid.Column="1" Text="Male"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Health Information" Margin="0,0,0,20">
+                            <StackPanel Margin="10">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Height:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="HeightText" Grid.Column="1" Text="175 cm"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Weight:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="WeightText" Grid.Column="1" Text="70 kg"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Activity Level:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="ActivityLevelText" Grid.Column="1" Text="Moderate"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Dietary Preferences" Margin="0,0,0,20">
+                            <StackPanel Margin="10">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Diet Type:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="DietTypeText" Grid.Column="1" Text="Balanced"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Allergies:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="AllergiesText" Grid.Column="1" Text="None"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Weight Goal:" FontWeight="Bold"/>
+                                    <TextBlock x:Name="WeightGoalText" Grid.Column="1" Text="Unknown"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <!-- Navigation Button -->
+                        <Button Content="Let's Begin"  Height="44" Width="180" FontSize="16" FontWeight="Bold" Background="#15803D" Foreground="White" BorderThickness="0" HorizontalAlignment="Right" Click="LetsBeginButton_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#15803D"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="FontSize" Value="16"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="14">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#166534"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
