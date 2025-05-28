@@ -669,12 +669,12 @@ public int GetUserIdByUsername(string username)
                 {
                     try
                     {
-                        // Step 1: Delete old meals
+                        // Delete old meals
                         var deleteCmd = new MySqlCommand("DELETE FROM MealPlanItems WHERE MealPlanID = @MealPlanID", connection, transaction);
                         deleteCmd.Parameters.AddWithValue("@MealPlanID", planId);
                         deleteCmd.ExecuteNonQuery();
         
-                        // Step 2: Insert updated meals
+                        //insert updated meals
                         foreach (var day in updatedPlan)
                         {
                             foreach (var entry in day.Value)
