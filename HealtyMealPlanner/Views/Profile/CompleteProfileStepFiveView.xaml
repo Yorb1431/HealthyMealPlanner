@@ -14,7 +14,6 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <!-- Header -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="24,24,0,0" VerticalAlignment="Top">
             <Border Background="#BBF7D0" Padding="8" CornerRadius="20" VerticalAlignment="Center">
                 <Viewbox Width="24" Height="24">
@@ -25,8 +24,7 @@
             </Border>
             <TextBlock Text="Healthy Meal Planner" Foreground="#166534" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
-
-        <!-- Main Content -->
+        
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,100,0,0">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,40">
                 <TextBlock Text="Let's get to know you better" 
@@ -35,8 +33,7 @@
                            Foreground="#15803D" 
                            TextAlignment="Center" 
                            Margin="0,0,0,24"/>
-
-                <!-- Activity Level Section -->
+                
                 <TextBlock Text="What's your activity level?" 
                            FontSize="18" 
                            FontWeight="Bold" 
@@ -55,7 +52,6 @@
                     </ComboBox>
                 </StackPanel>
 
-                <!-- Measurements Section -->
                 <TextBlock Text="What are your current measurements?" 
                            FontSize="18" 
                            FontWeight="Bold" 
@@ -81,7 +77,6 @@
                 Click="UnitToggleButton_Click"/>
 
 
-                <!-- Progress Dots -->
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center" 
                             Margin="0,24,0,24">
@@ -92,7 +87,6 @@
                     <Ellipse Width="12" Height="12" Fill="#15803D" Margin="0,0,8,0"/>
                 </StackPanel>
 
-                <!-- Navigation Buttons -->
                 <Grid Margin="0,0,0,24">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
