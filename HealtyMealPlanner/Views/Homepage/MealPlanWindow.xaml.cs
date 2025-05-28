@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,7 +54,7 @@ namespace HealthyMealPlanner.Views
                 if (success)
                 {
                     MessageBox.Show("Meal plan saved successfully!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-                    SaveButton.IsEnabled = false; // ✅ Disable the Save button
+                    SaveButton.IsEnabled = false; //disable save button
                     SaveButton.Content = "✔ Saved";
                 }
                 else
