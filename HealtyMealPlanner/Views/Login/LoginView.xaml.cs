@@ -69,22 +69,22 @@ namespace HealthyMealPlanner.Views
                 if (loggedIn)
                 {
                     // Get the full email address (important for 2FA)
-                    string userEmail = data.GetEmail(usernameOrEmail); // You need to implement this if you don’t have it
+                    string userEmail = data.GetEmail(usernameOrEmail);
                     string username = data.GetUsername(usernameOrEmail);
 
-                    // 1. Generate 2FA Code
+                    //Generate 2FA Code
                     string code = GenerateVerificationCode();
 
-                    // 2. Send Email
+                    //Send Email
                     data.SendEmailCode(userEmail, code, "2FA");
 
-                    // 3. Show 2FA Window
+                    //Show 2FA Window
                     var twoFAWindow = new TwoFactorAuthWindow(code);
                     bool? result = twoFAWindow.ShowDialog();
 
                     if (result == true && twoFAWindow.IsVerified)
                     {
-                        // 4. Open Main App
+                        //Open Main App
                         var mainWindow = new Views.MainWindow(username);
                         mainWindow.Show();
                         this.Close();
