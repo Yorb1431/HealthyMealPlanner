@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Git Log</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4ade80",
+            dark: "#1f2937",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .toggle-checkbox:checked + .toggle-label .ball {
+      transform: translateX(1.5rem);
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition">
+
+  <div class="fixed top-4 right-4 z-50">
+    <div class="flex items-center gap-2 bg-white dark:bg-gray-700 shadow-md px-3 py-1 rounded-full transition-colors">
+      <span class="text-sm">🌞</span>
+      <input type="checkbox" id="darkToggle" class="hidden toggle-checkbox" />
+      <label for="darkToggle" class="toggle-label w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center px-1 cursor-pointer relative">
+        <div class="ball w-4 h-4 bg-primary rounded-full transition-transform duration-300"></div>
+      </label>
+      <span class="text-sm">🌙</span>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-center mb-10">📜 Git Log Overzicht</h1>
+
+    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl shadow-lg overflow-auto max-h-[600px] whitespace-pre-wrap font-mono text-sm leading-relaxed border border-gray-300 dark:border-gray-700">
+      <pre>
+commit 7ee97fc2730a16ad01d7fecc0fde457a82fe4d67
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 30 19:27:08 2025 +0200
+
+    Remove git_log.txt file
+
+commit 81cca48f60c26e9ae4caa0a4521f2529fcdc2bde
+Merge: 424f27e 5326c30
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 30 19:26:33 2025 +0200
+
+    Merge branch 'main' of https://github.com/Yorb1431/HealthyMealPlanner
+
+commit 424f27edc03f1cfb547057984508eeb746b1cf76
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 30 19:26:29 2025 +0200
+
+    Enhance presentation page with dark mode toggle and improved layout
+
+commit 5326c3009f86ff33b541f76f454d3ec62d361445
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 30 19:11:06 2025 +0200
+
+    Update RegistrationStepOneView.xaml
+
+commit 33f16004fb0f7488eae5610473a1744169d8d4d8
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 30 19:10:54 2025 +0200
+
+    Update RegistrationStepTwoView.xaml
+
+commit 6eaa823deefa4694b22879ac70ba79bbb5d46d62
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 30 19:10:38 2025 +0200
+
+    Add presentation page with embedded PDF viewer and navigation links
+
+commit 37347e07c904ee18f2916d0e57a9d789ae03159e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 30 18:55:11 2025 +0200
+
+    Refactor code structure for improved readability and maintainability
+
+commit 6461bca910fd272fa64b48e6978796529cda56a8
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 12:09:26 2025 +0200
+
+    Add files via upload
+
+commit aaadd929c5e17cee60129b093cc6328865bb243c
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 12:05:37 2025 +0200
+
+    Update HealthyMealPlanner.csproj
+
+commit 2a376d4217c7592198b9ea76d90aa49332f5a881
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 12:02:26 2025 +0200
+
+    Add files via upload
+
+commit faa08ac7ced46f8d25e76678f7da11043540633e
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 12:02:18 2025 +0200
+
+    Delete HealtyMealPlanner/CreatedModels directory
+
+commit 8c0569512a20dca4f2eaf1d528b71149a4742d53
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 12:00:00 2025 +0200
+
+    Add files via upload
+
+commit 57c3f74ccf66f14012c24d27475d6b246cc43f86
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:59:51 2025 +0200
+
+    Delete HealtyMealPlanner/Models directory
+
+commit e410c01faf7ffe25bda487f7586dc019cd3b5e24
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:53:08 2025 +0200
+
+    Update App.xaml
+
+commit 82f662204287a2ab95444d28fcc4912a6d2533e8
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:51:29 2025 +0200
+
+    Add files via upload
+
+commit 993095cbed293c5a65b114ca9634b780e81099da
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:50:39 2025 +0200
+
+    Delete HealtyMealPlanner/Recipes/tofu_stirfry.jpg
+
+commit 84cb7c1af16ca0ea886730355f0eac029e586a8b
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:50:32 2025 +0200
+
+    Delete HealtyMealPlanner/Recipes/quinoa_bowl.jpg
+
+commit 7be4804ed82ff984b442e8817ece1d0dc6450358
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:50:25 2025 +0200
+
+    Delete HealtyMealPlanner/Recipes/grilled_chicken_salad.jpg
+
+commit b7a4b059b90770290acc7dc0fbfc46bcc1e6e653
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:46:08 2025 +0200
+
+    database
+
+commit abcd89da19ee616df25381744b720309bd084a0f
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:45:44 2025 +0200
+
+    Delete database_setup.sql
+
+commit e3c73eba74d281819a40720638bbdb649280279c
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:43:40 2025 +0200
+
+    Update LoggedOutView.xaml.cs
+
+commit 1e758f537b2e0729f873139c51b880fba05ad344
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:43:15 2025 +0200
+
+    Update LoggedOutView.xaml
+
+commit 08190e4e935b4d18d426b53b78d8e4dad46c7357
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:42:34 2025 +0200
+
+    Update LoginView.xaml.cs
+
+commit 1d379e019bf73d979f0a24b59b14926fd89db5e9
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:41:49 2025 +0200
+
+    Update LoginView.xaml
+
+commit 1afe6f2f2b5dd4181699377e244ed75347cd8b3d
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:40:44 2025 +0200
+
+    Update MainWindow.xaml.cs
+
+commit 496992261eee91c059e29e47f941efe1fb236519
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:40:26 2025 +0200
+
+    Update MainWindow.xaml
+
+commit 3037a9521fd5a6001aa65fe3e1648ceae6173c4c
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:39:09 2025 +0200
+
+    Update MealPlanWindow.xaml.cs
+
+commit 4abc61a44a45a3b8c42b139e2ff73bbc9dd0b73c
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:37:47 2025 +0200
+
+    Update CompleteProfileStepTwoView.xaml
+
+commit 5345d038d1c373a2bdbceeffd23f5929d7243a38
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:37:00 2025 +0200
+
+    Update CompleteProfileStepThreeView.xaml
+
+commit f8f3b57430b46dae5915e5f3e47b2a018ad22dc2
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:36:33 2025 +0200
+
+    Update CompleteProfileStepOneView.xaml
+
+commit 79460f6aaa2280e8cb118de60f9626491b26ab99
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:35:57 2025 +0200
+
+    Update CompleteProfileStepFourView.xaml
+
+commit 634189b953c5fa4bab25012de96ce1c6bd7f56fe
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:34:42 2025 +0200
+
+    Update CompleteProfileStepFourView.xaml
+
+commit a745eee07c370702499abe7e260db77d40638dca
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:34:19 2025 +0200
+
+    Update CompleteProfileStepFiveView.xaml
+
+commit 8318c7559117a8c90113b6cf35f93f60193db29d
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:32:59 2025 +0200
+
+    Update Data.cs
+    
+    replaced the whole file with a working one to make sure everything works as intended
+
+commit 6448654f5d86d0bdcf73548cbc97ced56c1cb072
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:30:00 2025 +0200
+
+    profile files
+    
+    added the rest of the profile related pages
+
+commit 30999faab1f946a9252eb964cc5b96aac659825f
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:21:39 2025 +0200
+
+    stepfiveview creation
+    
+    added the final page for registration
+
+commit ce369de96ca7cefa361a003ce5f8cbac9ff8f440
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:19:13 2025 +0200
+
+    Delete HealtyMealPlanner/MainWindow.xaml.cs
+
+commit 29298a5b4e7a6a25610ec464c4aa0259c2dd94ad
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:19:05 2025 +0200
+
+    Delete HealtyMealPlanner/MainWindow.xaml
+
+commit 868f5e90be3aadebf71b1f53133a46e68112d23d
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:18:26 2025 +0200
+
+    Delete HealtyMealPlanner/Views/RecipePage.xaml.cs
+
+commit 7cb55b6ef7562ecd884ac5f6ab4761f0210cdc93
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:18:17 2025 +0200
+
+    Delete HealtyMealPlanner/Views/RecipePage.xaml
+
+commit b94f161b5760a2dbf3d4f2b7cfceaee6ec14182e
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:18:06 2025 +0200
+
+    Delete HealtyMealPlanner/Views/UserProfile.xaml.cs
+
+commit 059ee301f2ef5d5e6ce7656c0542ba39df830a77
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:17:57 2025 +0200
+
+    Delete HealtyMealPlanner/Views/UserProfile.xaml
+
+commit 9e2c83fd78d2ed77ae503573ba98ffcf9abf7890
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:15:47 2025 +0200
+
+    Delete HealtyMealPlanner/Views/Homepage/Data.cs
+
+commit 361a9fe0875307408c0aaa1694bbf87cb6c2fbe8
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Wed May 28 11:14:55 2025 +0200
+
+    Update Data.cs
+
+commit 63ca2921abf6491255c5e6aa097a3f27b38f2d83
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 27 22:38:34 2025 +0200
+
+    Add Meal Planner and Meal Plans functionality
+    
+    - Implemented MealPlannerView for displaying and managing weekly meal plans.
+    - Created MealPlansPage for listing and managing saved meal plans.
+    - Added SaveMealPlanWindow for saving meal plans with user-defined names.
+    - Integrated meal plan viewing, editing, and deletion features.
+    - Enhanced UI with improved styling and layout for better user experience.
+
+commit d7228143e8131bd36efdf2a0b893792c69558e12
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 27 19:28:55 2025 +0200
+
+    Refactor profile completion views to enhance navigation, improve layout, and handle user input more effectively
+
+commit 5b588724998bed9b73a584c25c0170a46d19375c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 27 17:01:45 2025 +0200
+
+    Refactor CompleteProfileStepOneView to improve option selection handling and enable next button functionality
+
+commit 7727751763d1accf6a5364961a213737d97f603f
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 27 17:00:28 2025 +0200
+
+    Enhance CompleteProfileStepFourView with profile image handling and improved navigation
+
+commit 7b464d3af81c9448c0cd615491275c9474432851
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 27 16:57:45 2025 +0200
+
+    Refactor CompleteProfileStepTwoView.xaml for improved layout and button styling
+
+commit 09425ad13decf2c1d7c6f122e508da75dac4eb96
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 15:57:54 2025 +0200
+
+    Update EditMealPlan.xaml.cs
+
+commit 4311c19a042bebb9fa653b5c5be675720b6a976e
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 15:57:35 2025 +0200
+
+    Update EditMealPlan.xaml
+
+commit 35afb8bb9dacf33a183d182b5a6f698c3af3a718
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 15:56:57 2025 +0200
+
+    Update CreateMealPlanView.xaml.cs
+
+commit ddbad5260fd7dd84c756b53df41829c6a8fe9e52
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 15:56:34 2025 +0200
+
+    Update CreateMealPlanView.xaml
+
+commit f23a5bade1ded01c6ece8fcb08fc5dead8f143c4
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 15:41:41 2025 +0200
+
+    Update Data.cs
+    
+    added updatemealplan --> if the user picks a new recipe in the editmealplan page, then the mealplan will be saved with the new recipe
+
+commit f6b69a986b1fa1a0b24c08916f5e15e68d4efdd5
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 14:45:45 2025 +0200
+
+    Update Data.cs
+
+commit 576d49d9bb770da9f48f66d80158b989e92f5d3e
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 14:45:15 2025 +0200
+
+    Update Data.cs
+    
+    added SaveMealPlan --> this wil save the mealplan in the mealplans table with the userId, planname and the mealplan itself(a recipeid for every day)
+
+commit af7e7b3ec3217da0433688fe1070300331ec14fc
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 14:24:41 2025 +0200
+
+    Update Data.cs
+    
+    added getdietypeuserid -> get the diettype of the user(userid)
+
+commit 136abcb649ccccca9297c79597c8b63d71e91e04
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 14:20:51 2025 +0200
+
+    added createmealplan and editmealplan
+    
+    create mealplan lets the user create their own mealplan, which redircts them to the recipe broser, you can add meals and create a daily or weeklyplan
+    editmealplan will allow the user to edit an existing mealplan from the usersid databse
+
+commit 173f2e70e545e117e3fbfbc7cbd9f9b9b907c0b3
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Mon May 26 14:18:55 2025 +0200
+
+    added selectplantype
+    
+    choose between daily or weekplan
+
+commit b0882f00ca38cf3af4092ce47d2e496f615a1d67
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sun May 25 14:00:35 2025 +0200
+
+    Update Data.cs
+    
+    added ToggleFavorite --> if the recipe is not yet in the table with the ser id, it will be added, if the switch is activated againm, it will remove the link from the table(aka remove recipeId with userId)
+    
+    added RemoveFavorite --> removes recipeId and userId(link) from favorties table
+
+commit 868f2bcd45bc5e7e0ce4d706126a7264bf35ad21
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sun May 25 13:32:59 2025 +0200
+
+    Update Data.cs
+    
+    added isrecipefavortied, checks if a certain recipeid is favorited by a user with userId
+    
+    added getfavoriteRecipes(int userId), gives all the favorited recipes for a given user
+    
+    next implemntation --> toggleFavortite and removefavorite
+
+commit 4a39beba5a8b45d580d2d3ba10a52de96019ed6d
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sun May 25 13:27:21 2025 +0200
+
+    Added favoritpage and recipeview
+    
+    added favorite page which shows the recipes the user has favorited
+    added recipeview, which is the detailed window that shows thee user the recipe isntructions, title, etc.
+
+commit 9f32a4060c877499645ec10d1b6d16360c660eef
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 16:19:26 2025 +0200
+
+    Update Data.cs
+    
+    added GetUserAllergyIds(returns the ids of the allergies)
+    added getAllRecipeAllergyLinks(maps the recipe to allergies)
+
+commit 80b8ce0f203bf87998ad3569db9ce6539c37dd01
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 16:12:59 2025 +0200
+
+    Added RecipePage.xaml and cs
+    
+    this window/page loads the recipes in rows of 3, later im gonna add that you can press each individual recipe to see the details, it also filters based on the diettype/goal and allergies
+
+commit b468c0e82b70a3f6fcd9918687fc3aaf70807864
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 15:55:04 2025 +0200
+
+    Update Data.cs
+    
+    added GetFullUserProfile(return the full userprofile database information)
+    added geAllrecipesWithIngredients(returns all the recipes that contain a certain ingredient)
+    added GetUserIdByUsername(speaks for itself, returns the userid when the username is given)
+
+commit 20ee52a9dcf195d646d186fee833c269e5eb2497
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 15:48:11 2025 +0200
+
+    Delete HealtyMealPlanner/Views/Homepage.xaml.cs
+    
+    moved to Homepage folder
+
+commit 8b9d28d4db5d7836abc935062d44864087f621e7
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 15:47:33 2025 +0200
+
+    Delete HealtyMealPlanner/Views/Homepage.xaml
+    
+    moved to Homepage folder
+
+commit a2070f5afdfe6a0348f91303dc2f9a4a8fcac739
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Sat May 24 15:46:58 2025 +0200
+
+    moved homepage.xaml and cs file to folder
+    
+    implemetned the full working homepage
+
+commit fb265b6b0ce99f7ae483ad1b053cde2c0c5d8fe7
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 20:06:56 2025 +0200
+
+    Update RegistrationStepTwoView.xaml.cs
+    
+    saves user choices in variables but doesnt create new user in DB just yet, because when canceling profile creation would still add user into DB
+
+commit 94480b1221abff20a0638144af38650523c7ba26
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 20:05:46 2025 +0200
+
+    Update RegistrationStepTwoView.xaml
+
+commit 8ab63bfcd8343b3ebdfdaa8d429f2c7c028f47be
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 20:05:16 2025 +0200
+
+    Update RegistrationStepOneView.xaml
+
+commit bf2a08f393ae2217481093efb61454b09556d927
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 20:03:27 2025 +0200
+
+    Update RegistrationStepOneView.xaml.cs
+    
+    added implementation for RegistrationViewOne
+
+commit 6c8249af0b66090865291a5c1e637ff4eb38f0fe
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 20:01:42 2025 +0200
+
+    Update CompleteProfileStepOneView.xaml.cs
+    
+    implemented variables that are passsed trough to the next view
+
+commit 319f46ee0f82084c5ad0572f21ee57e594878cf0
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 19:59:48 2025 +0200
+
+    Update CompleteProfileStepOneView.xaml
+    
+    changed step 1 progression dots and icon
+
+commit b5e406c1cdf3e20647ba3baea47254b11b2d638c
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 12:07:27 2025 +0200
+
+    Added SetNewPassword and VerifyCode
+    
+    added VerifyCodeWindow, which will check the 2FA code / password reset code/ verification code, if it is correc it will pass to the next screen, in this case, the SetNewPassword, which will then update the users password
+
+commit 31c226dd2230b13b0b0102b6693c71e9dc490ba5
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 12:04:21 2025 +0200
+
+    Update Data.cs
+
+commit f554dda67560003175a9b1c2f5692e00c322609e
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 12:02:49 2025 +0200
+
+    Update Data.cs
+    
+    added UpdateUserPassword which update the password of the user if the verify code is correct, this password stillneeds to adhere to the given conditions
+
+commit ff0e387af77e1ef685befa3317b93143fa2bce89
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Fri May 23 00:25:27 2025 +0200
+
+    Added ResetPasswordRequestWIndow
+    
+    added window that lets the user give the email they want to reset the password for, will redirect the person(if code is correct) to SetNewPasswordWindow( will be implemented later)
+
+commit a00309a1130034e7325a360535162a3d64aaccaa
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 19:48:07 2025 +0200
+
+    Update Data.cs
+    
+    added GetUsername function that gets the username based on teh email provided
+
+commit 5805b5f83874eea7ed21a3745afc4711f94b9305
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 19:46:09 2025 +0200
+
+    Added 2FA
+    
+    added 2FA window and implementation
+
+commit 34261ed683812666826dae05a76146509ab603ce
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 17:16:24 2025 +0200
+
+    Update LoginView.xaml.cs
+    
+    implemented toggle passwordbutton, also implemented loginbuton logic --> when giving right email/username and pasword, user is redirecte to TwoFactorAuthWindow.xaml
+    
+    resetpasword redirects to ResetPasswordRequestWindow
+
+commit 4bf03b48f6f5345461ca3f35cb85b90210dde8a9
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 17:12:57 2025 +0200
+
+    Update LoginView.xaml
+    
+    Added password visibilty and also reset password button
+
+commit 68d036d70f32487ea7d817b48afc5b46d2c41631
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:44:25 2025 +0200
+
+    Update LoggedOutView.xaml.cs
+    
+    added the implementation of CloseButton_Click --> closes LoggedOutView, which closes the program
+
+commit a6fdf16d5eedfe9635b00262273fa754ef746815
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:41:21 2025 +0200
+
+    Update LoggedOutView.xaml
+    
+    added close button to logoutwindow(before this program had to be closed in VS, also added icon for our app
+
+commit 95a5c7f2f42adf21cd70592c4fba97c5cb933578
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:35:22 2025 +0200
+
+    Update Data.cs
+    
+    added GetEmail(used for getting the email based on the username)
+    added SendEmailCode(used to send the code to the user )(
+
+commit c48beeae94df5a9344c975af2f79d7af1afad2a5
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:30:22 2025 +0200
+
+    Delete HealtyMealPlanner/Views/LoginView.xaml.cs
+    
+    moved it to login folder
+
+commit b62a25e08a74585cdf3b2cb7d07dbffe842ade79
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:30:10 2025 +0200
+
+    Delete HealtyMealPlanner/Views/LoginView.xaml
+    
+    moved it to login folder
+
+commit db16cfb2484121ab83a36787be1cd916b4ce64f5
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:30:01 2025 +0200
+
+    Delete HealtyMealPlanner/Views/LoggedOutView.xaml.cs
+    
+    moved it to login folder
+
+commit a59dd41ed286e9bbc1d9059fecc1892adcae18c0
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:29:51 2025 +0200
+
+    Delete HealtyMealPlanner/Views/LoggedOutView.xaml
+    
+    moved it to login folder
+
+commit f0f261626222e25b531876457e4b51c60305e871
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:29:15 2025 +0200
+
+    Add Login Folderr
+    
+    added login folder that contains all files related to login(to make code more readable), also moved loginview and logoutview to folder
+
+commit 79f88120cb78cfbae74080ba891689459908cc1a
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:16:31 2025 +0200
+
+    Added allergy icons
+    
+    this file contains the icons used to indicate allergies
+
+commit cb9fe7ca2a5312c28ea190a2cc867b550ab05fc7
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:15:06 2025 +0200
+
+    Add 3 pictures of dishes to use later
+
+commit cd0f8115b197be45b91ccbdcaf2bcd1c581f779d
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 16:14:26 2025 +0200
+
+    Add pictures for profile pictures
+
+commit 1b3656bf71f5bb3cd22c724654b52a8852d9698b
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 15:37:24 2025 +0200
+
+    Create MealEntry.cs
+    
+    create mealEntry model used in project
+
+commit b8128b8bfd7c4cb606b1a827528eae7fdac3abb2
+Author: Jonas22452 <118227848+Jonas22452@users.noreply.github.com>
+Date:   Thu May 22 15:36:11 2025 +0200
+
+    Create Recipe model used  in project
+
+commit 8da0ed45f5fc23e2f0e74982ab72df503f077eaa
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 21:34:14 2025 +0200
+
+    feat: initialize database setup with Users and UserProfiles tables
+
+commit 9ceb0932cc7ab49ea7bc2579cf1fbe04799be06b
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 18:15:46 2025 +0200
+
+    feat: add RecipePage and UserProfile with functionality for meal details and user profile management
+
+commit d98cbeadd2d92e4395e34879ea26c03c8b838c3d
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 17:02:01 2025 +0200
+
+    feat: add MainWindow with layout and data binding for meal planning features
+
+commit 2f56c10454d6e112035553ba10339bce1e667b5e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 16:00:41 2025 +0200
+
+    feat: implement LoginView with user authentication and navigation features
+
+commit 3c4428ab431c15dd52723240a1c039e0f1a8ce61
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 15:32:50 2025 +0200
+
+    feat: add LoggedOutView with login and registration functionality
+
+commit 0a6f33563415fd6b0971521de8698672a9cbe0b8
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 15:15:53 2025 +0200
+
+    feat: add Homepage view with ingredient management and meal planning features
+
+commit 0c1e7f560c40dc2e995176b6442aa39ec2dad787
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 14:57:02 2025 +0200
+
+    feat: implement RegistrationStepOneView and RegistrationStepTwoView for user registration process
+
+commit 15b70f3c6aa490efe8dff75bc59e92ae36dede2f
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 14:18:28 2025 +0200
+
+    feat: add CompleteProfileStepFourView for final profile completion step
+
+commit 74a318d8e624b415cc37ef6fd36c88c7a65a237a
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 14:06:26 2025 +0200
+
+    feat: implement CompleteProfileStepThreeView for allergy selection and navigation
+
+commit e22de7583baf8fe763d29f6fb7467a1b5f57c614
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:45:18 2025 +0200
+
+    feat: add CompleteProfileStepThreeView for profile completion
+
+commit fa0c40617c50176e01fb82248db139db00b658bb
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:44:44 2025 +0200
+
+    feat: add CompleteProfileStepThreeView for allergy inquiry and navigation
+
+commit 96bfc08eb57122085960049c484d736fec570b0f
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:43:24 2025 +0200
+
+    feat: implement CompleteProfileStepTwoView with option selection and navigation
+
+commit 95ce19eeaab04bfa1ebc8444770bad0ef21da9da
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:32:51 2025 +0200
+
+    feat: add CompleteProfileStepTwoView.xaml.cs for profile completion step two
+
+commit f40fe6aec669d0c6f64ab9fc0e1289ec2e8fa50e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:27:48 2025 +0200
+
+    feat: enhance CompleteProfileStepTwoView with dietary options and improved UI elements
+
+commit b593bedd1ef0868db22838b6f2c53caf6ebc5613
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:27:21 2025 +0200
+
+    feat: add CompleteProfileStepTwoView.xaml for profile completion step two
+
+commit 8392a003645b367ecf900186989d8aa052afda13
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:26:53 2025 +0200
+
+    feat: add CompleteProfileStepTwoView.xaml file
+
+commit 84b19a62be885f887e971f17e11da2e04ae28ee4
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:24:23 2025 +0200
+
+    feat: enhance option selection with improved text color feedback and navigation to next step ++ comments
+
+commit 820ba5e359c9cbb3b88600c1f0bf62c97232b5a6
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:20:17 2025 +0200
+
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Windows.Media;
+
+commit a670dd7853ae38a3d8a1ab781b2b34fcbe32f778
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:19:56 2025 +0200
+
+    feat: add CompleteProfileStepOneView.xaml.cs file
+
+commit 280bff6b50e0d777725945175ef24f3f4011a724
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:19:05 2025 +0200
+
+    Comments added
+
+commit 0001584925aceda9f79cc1ecc2d3a21ef6a29493
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:16:31 2025 +0200
+
+    feat: enhance CompleteProfileStepOneView with diet goal options and improved button styling
+
+commit 52b2d257494164df9f3a8318d2675c12f1f3345c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 13:13:11 2025 +0200
+
+    feat: add header section to CompleteProfileStepOneView
+
+commit 04b803f1e2ef0b39b692e751c3df599fcf4bb6c2
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 12:58:22 2025 +0200
+
+    feat: add background gradient to CompleteProfileStepOneView
+
+commit 19ac4a4b2b0037f32f10c738f890fe3721899cc4
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 12:57:31 2025 +0200
+
+    feat: add CompleteProfileStepOneView XAML layout
+
+commit cc2982083db75f9888913cfb0d9e2db4cb4eeeb3
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Tue May 20 12:56:54 2025 +0200
+
+    Add profile stepONE
+
+commit 1386b8eb4e953f2e40db63eb096f5c33b79e6bb4
+Merge: 83095a2 af1503b
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Mon May 19 20:17:59 2025 +0200
+
+    Merge Version01
+
+commit af1503bb382fce1ac29ae26e27b2a5e2f27315db
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 20:14:53 2025 +0200
+
+    feat: enhance MainViewModel with meal plan commands and initialization logic
+
+commit e0ffb316a0618228eb009dffc745fbc22c68f013
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 20:05:45 2025 +0200
+
+    using....
+
+commit cdbdb01296755284bdd769303ef0fc5ac52c967c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:57:28 2025 +0200
+
+    Create file MainViewModel.cs
+
+commit 1a339709a86edbd3a81a8166d9da87bf66f8fac3
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:55:32 2025 +0200
+
+    project structure and add necessary configurations
+
+commit 470ea370635f806050f15d25c31d10bd0f54972d
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:54:25 2025 +0200
+
+    feat: implement user registration, login, and profile management methods
+
+commit 8df18808fb7a7013681d9fdd26db0006cf7f4102
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:42:35 2025 +0200
+
+    fix: adjust spacingconsistency
+
+commit 89eae8bb75bfad3442e3dfcdd7603b2da27ba558
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:42:13 2025 +0200
+
+    feat: add comment for Insert helper method in Data.cs
+
+commit f55a8886a6674cbe4d15c3b07deb1f3bf916dada
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:42:00 2025 +0200
+
+    feat: add Insert method for executing database commands
+
+commit 5f7183ef719ddf85b88b133fbd83b8a949894c1d
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:41:19 2025 +0200
+
+    feat: implement HashPassword method for secure password hashing
+
+commit 2d915b1fd36968da71288a353f324343a68a9016
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:41:03 2025 +0200
+
+    fix: correct formatting and ensure proper namespace structure in Data.cs
+
+commit cf132aea398f775b8914ce59ac49d3032335b902
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:37:49 2025 +0200
+
+    feat: add necessary using directives to Data.cs
+
+commit e43a132ccecc657ddb0817f8a2b51e95f062f8ea
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:37:37 2025 +0200
+
+    feat: create Data.cs file
+
+commit aac92785152a907b3edfdf18e21feba198dcf00e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:36:58 2025 +0200
+
+    feat: add AssemblyInfo.cs with theme resource dictionary configuration
+
+commit 8983439ec2f4ae35dff51ff90119b197d4c3cbb8
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:34:05 2025 +0200
+
+    add commentss
+
+commit 151d959172358df62b3402361b71f91ad702a91c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:33:49 2025 +0200
+
+    feat: add error handling in App.xaml.cs for unhandled exceptions
+
+commit 6b1cb7ddc29a956759ecd4debd920ba104be2ec2
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:33:32 2025 +0200
+
+    feat: implement initial structure for App.xaml.cs with necessary namespaces
+
+commit 6d16f972b9958c1e657e898ee8a41dfd65276898
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:33:08 2025 +0200
+
+    feat: initialize App.xaml.cs file for application logic
+
+commit b16064330e3ee31802236d646427e62feffa81fa
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:22:17 2025 +0200
+
+    Comments adddd
+
+commit 3f3b806ea24f87a01bc63169008ccd0f4d40e94a
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:22:06 2025 +0200
+
+    feat: add BooleanToVisibilityConverter to App.xaml for improved visibility handling
+
+commit 04ee8f735094d1f111805edfa852e612591f9276
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:21:55 2025 +0200
+
+    feat: add DropShadowEffect resource to App.xaml for enhanced UI depth
+
+commit d421f7d8757018d5a2c36e5065b2eb04fa8448db
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:21:37 2025 +0200
+
+    feat: add ModernComboBox style with custom template and properties in App.xaml
+
+commit 6b877695db9a44febe63ad33bd1356fd8b76e6e2
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:21:19 2025 +0200
+
+    feat: add ModernPasswordBox style with custom properties in App.xaml
+
+commit 2962ec30abf6fa8c7f00bb9c2359f6541b33ec66
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:21:01 2025 +0200
+
+    feat: add ModernTextBox style with custom template and properties in App.xaml
+
+commit 991dc1bcbf56c754443e2cc7bf673fae59446dc3
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:20:30 2025 +0200
+
+    feat: add BackButton style with custom template and hover effect in App.xaml
+
+commit a8255b18be3278650e3a48b7bfb9b081b154b9eb
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:20:10 2025 +0200
+
+    feat: enhance App.xaml with additional styles for LabelText and LoginButton
+
+commit b3e5520b3a89dfdbe54da55d8e0557978c11169c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:19:40 2025 +0200
+
+    feat: add resource dictionary with color and text style definitions in App.xaml
+
+commit 4e16701fea58202989aaf95d03160b8da26e0f79
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:19:22 2025 +0200
+
+    feat: initialize App.xaml with application class and resources
+
+commit 417f02774f439142868f7894e8596c11ef4c64d7
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:19:05 2025 +0200
+
+    File add.xaml added
+
+commit cef5211b1676b33630f20f53f64541e33dbb31c8
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:17:45 2025 +0200
+
+    fix: add missing using directive and ensure proper namespace structure in MainWindow.xaml.cs
+
+commit e170b011f2606dc6bf172f8adbc79768802eff12
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:17:06 2025 +0200
+
+    using System,...
+
+commit b29a2f8dd2235108e7edafadd88c9c25f861a885
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:16:51 2025 +0200
+
+    File MainWindow.xaml.cs added
+
+commit 2e820d5a5d7c0d17def83ccab3fe42b0004aae2c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:15:52 2025 +0200
+
+    feat: define MainWindow layout and namespaces in XAML
+
+commit 8721963acaef13a936a11e327c31b4ad791caba9
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:15:39 2025 +0200
+
+    MainWindow.xaml main startup
+
+commit ec6bb54e5a4c1f4f9f15e3d1c229594ea38f0ac5
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 19 19:13:45 2025 +0200
+
+    feat: add initial solution file for HealthyMealPlanner project
+
+commit 83095a2a2afd323706f89a3759beaa999426f1e9
+Merge: 4164032 60356da
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Fri May 9 14:00:34 2025 +0200
+
+    Updated README main
+    
+    README UPdate
+
+commit 60356daa5dfac0d14f6ada40f586dcbf83f9b69a
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 13:59:46 2025 +0200
+
+    README UPdate
+
+commit 416403206ad375301d739ce207c052cd24e44d4e
+Merge: 0a8faa8 24f3c7a
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Fri May 9 13:57:20 2025 +0200
+
+    feat: implement full Recipe Page UI with ingredients, instructions, nutrition, and WPF integration
+    
+    NXT 2 pages HTML --> XAML, simple C# backend
+
+commit 24f3c7aa5148a57ca88eb93965d45949f3fff20e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 13:53:22 2025 +0200
+
+    XAML debugged
+
+commit 6c956611c636e4a641442dafc5728425bea925b1
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 13:29:26 2025 +0200
+
+    Add RecipePage layout with ingredients, instructions, and nutrition details
+
+commit d7b8476363ee6405f2ce1c3d74f51c4b800c6210
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 12:27:52 2025 +0200
+
+    Add initial RecipePage.xaml file
+
+commit a73a05c38ca632baefb38db7b34e1aa21087fc2f
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 12:23:54 2025 +0200
+
+    Nutrion page  HTML TAilwind still bugged
+
+commit fe0fbe07a1e1ea17514e41f84720357d4abb4883
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 12:20:37 2025 +0200
+
+    Fix instructions
+
+commit e13d8dba19d4d617318f1d006d1a904ce3655a68
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 12:16:35 2025 +0200
+
+    Main frame  Recepes Page, now add feat
+
+commit 64acc68f1c61d6bb17078ba5b1e66cc19e90aa5c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Fri May 9 11:31:56 2025 +0200
+
+    add html page RecipePage
+
+commit 0a8faa876f938c4bb19fe34b6744db5c8ba29104
+Merge: 03323f1 4396e43
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Thu May 8 16:24:32 2025 +0200
+
+    feat: Complete Home and Profile pages with core logic
+
+commit 4396e436a68e05d9c20b83ef437aead4399578a9
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 16:19:45 2025 +0200
+
+    Refactor UserProfile.xaml to improve structure and add event handlers for profile picture and allergy management
+
+commit c4df135d7962f84794bb21ebe203dc99ef85bba4
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 16:12:33 2025 +0200
+
+    Add detailed layout and functionality to Homepage with meal planning features
+
+commit 4d7b374e59916e9f845f2dcde3b8949db430967c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 15:29:47 2025 +0200
+
+    Add Homepage.xaml file for initial layout setup
+
+commit c5d00d3dd8024b833416e7ea835306df3c9d365b
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 15:28:14 2025 +0200
+
+    Add initial Homepage layout with meal planning features
+
+commit 412fabb3f53b5f9686848be0aa57b8c2e8270f0e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 15:01:46 2025 +0200
+
+    Refactor UserProfile layout and improve styling
+
+commit aafec57955ed559a1ec7ec7d4856e4a67777efc7
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 14:41:37 2025 +0200
+
+    XAML  Userprofile debug
+
+commit 37261be09dad9ed3fa66c2e37ab6104e955cdae6
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:56:49 2025 +0200
+
+    file optimaliseering
+
+commit 7382a3acc6e28ed6eeed29afa3c8b38dd28cbbbb
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:55:51 2025 +0200
+
+    diet , allergie / delete  en save
+
+commit ec16a7f5f3740bbb1d91463d2a69ccbebbbbdb88
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:54:52 2025 +0200
+
+     height, weight, BMIen calorien
+
+commit a912063a825936a3a6d444e5f23bb0d6bd57fb4f
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:54:01 2025 +0200
+
+    Sidebar // profile image usage
+
+commit 687e9373a55360e53988bdcc98fe87536ce75725
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:53:29 2025 +0200
+
+    Create profile card layout
+
+commit ebeae7dfc0bb999726e0d44f903ac3067c73b1da
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:53:04 2025 +0200
+
+    Header section
+
+commit 70772c43a29845342be563985a9f887ce20c8eea
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:52:31 2025 +0200
+
+    Initial setup of WPF ProfilePage layout with window and ScrollViewer
+
+commit 59e5922f5a874bd0b339fda7e6e5bab43d13fd10
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Thu May 8 13:45:58 2025 +0200
+
+    Add User Profile page with dynamic health info and goals
+
+commit 03323f122bdbbba4a85943ea88094f2c4d0a08f3
+Author: JonasTheCoder123 <118227848+JonasTheCoder123@users.noreply.github.com>
+Date:   Mon May 5 16:46:16 2025 +0200
+
+    Update CompleteProfile_Step_Four.html
+    
+    linked the pictures from the assets folder to the html code of the fourth step in the profile creation
+
+commit c1559bf710b186e8bdc46f443fb899db1aff28bc
+Author: JonasTheCoder123 <118227848+JonasTheCoder123@users.noreply.github.com>
+Date:   Mon May 5 16:44:50 2025 +0200
+
+    Added Dishes to assets folder
+    
+    added 10 dishes to the assets folder
+
+commit 2415441af53b5a56500396543c66b755a5b9040b
+Merge: 4d47472 6c64658
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Mon May 5 15:03:34 2025 +0200
+
+    FBV first wire
+    
+    Images need to be added
+
+commit 6c646581137e93d7c9146b3023f3bc8bf67069fd
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:54:42 2025 +0200
+
+    Full Profile comp after Register frame ---> HTML MAINFRAME ---> FVB
+
+commit b10799a99a106c9fcfd573c8916b20cfa99e7744
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:53:49 2025 +0200
+
+    Registration_Step_Two mainframe ---> HTML  TAILWIND ---> FVB
+
+commit 91a717fed527593208bda821e36c5c6404c77d2d
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:53:07 2025 +0200
+
+    Registration_Step_One  Mainframe ---> FBV
+
+commit 442ece62f52e7a3730665473c9785c2e602ab851
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:52:06 2025 +0200
+
+    Log In Frame  HTML ---> FBV
+
+commit 6adf8d2cf3b5ed2029ec13cd8ae86b7cf44f9ba7
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:50:35 2025 +0200
+
+    Github icon connect ---> mainframe LoggedOut HTML
+
+commit 7e71290c5dc35c3f2fef56088c2e2fe42a020ce7
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:48:24 2025 +0200
+
+    LoggedOut HTML ---> Main frame
+
+commit 4d47472e3ca10a63755d6e2d9436a349b4da5376
+Merge: 851fc3f 233afb6
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Mon May 5 14:21:57 2025 +0200
+
+    Merge teamwebsite #1
+    
+    Teamwebsite
+
+commit 233afb67feb9437886bb8f24fb1fe5c2ec6ff051
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:18:07 2025 +0200
+
+    UML SVG ---> LInked HTML Teamwebsite
+
+commit 53781b5a84d47e11a1c6f588192343e6432fa4fb
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:17:21 2025 +0200
+
+    ERD SVG ---> Link HTML Teamwebsite
+
+commit 4796c0bb1c33d9740bf977795c38efd16050756c
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:16:33 2025 +0200
+
+    HMP ERD ---> SVG ERD
+
+commit d2bdeaa113f5f7ce1bb5251db86ae88d001d28f2
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:14:53 2025 +0200
+
+    Documentatie HMP ---> Word / PDF
+
+commit b3a931d7a792d53b6de1c7e71b82755b9070df3e
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:13:45 2025 +0200
+
+    UML-HMP
+
+commit 99062680e33da5e39f2a1ac85b80831a6c642019
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 14:09:01 2025 +0200
+
+    Teamwebsite index-teamwebsite
+
+commit 851fc3f0decb1cc38715d668e1ecf2cb371e337e
+Merge: 7e6bc8e 4bed624
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Mon May 5 13:55:35 2025 +0200
+
+    Merge pull request #1 from Yorb1431/README
+    
+    add README.md
+
+commit 4bed62460aa77f2fad3ff1ae6aeac729b97a4e08
+Author: Yorb1431 <yorbevandermast@gmail.com>
+Date:   Mon May 5 13:54:39 2025 +0200
+
+    git add README.md
+    git commit -m "Toegevoegde README.md met projectinformatie en installatie-instructies"
+    git push
+
+commit 7e6bc8e758672c38dcff3c45f7e6c7eae374f412
+Author: Yorbe van der Mast <99259155+Yorb1431@users.noreply.github.com>
+Date:   Mon May 5 13:34:34 2025 +0200
+
+    Initial commit
+      </pre>
+    </div>
+
+    <div class="flex justify-center gap-4 mt-10">
+      <a href="index-teamwebsite.html" class="px-4 py-2 bg-primary text-white rounded hover:bg-green-600 transition">🏠 Home</a>
+      <a href="presentatie.html" class="px-4 py-2 bg-primary text-white rounded hover:bg-green-600 transition">📊 Presentatie</a>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-6 mt-12">
+  <p class="mb-4">Gemaakt door Yorbe en Jonas 💪 | &copy; 2025 Healthy Meal Planner</p>
+  <a 
+    href="https://github.com/Yorb1431/HealthyMealPlanner" 
+    target="_blank" 
+    aria-label="Bekijk de GitHub repository"
+    class="inline-block"
+  >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="currentColor" 
+      class="w-8 h-8 mx-auto text-white hover:text-primary transition"
+    >
+      <path 
+        fill-rule="evenodd" 
+        d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.729.082-.729 1.205.085 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.42-1.305.763-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.125-.303-.535-1.523.115-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.005-.404c1.02.005 2.045.138 3.005.404 2.29-1.552 3.295-1.23 3.295-1.23.652 1.653.242 2.873.118 3.176.77.84 1.232 1.91 1.232 3.22 0 4.61-2.807 5.625-5.48 5.922.432.372.816 1.102.816 2.222 0 1.606-.014 2.898-.014 3.292 0 .32.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z" 
+        clip-rule="evenodd"
+      />
+    </svg>
+  </a>
+</footer>
+
+  <script>
+    const toggle = document.getElementById("darkToggle");
+    const html = document.documentElement;
+
+    if (localStorage.getItem("theme") === "dark" || 
+       (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      html.classList.add("dark");
+      toggle.checked = true;
+    }
+
+    toggle?.addEventListener("change", () => {
+      if (toggle.checked) {
+        html.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    });
+  </script>
+</body>
+</html>
